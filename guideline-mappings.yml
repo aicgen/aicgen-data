@@ -387,6 +387,79 @@ dart-testing:
     - testing
     - flutter
   category: Language
+swift-basics:
+  path: language/swift/basics.md
+  languages:
+    - swift
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - fundamentals
+    - optionals
+    - value-types
+  category: Language
+swift-concurrency:
+  path: language/swift/concurrency.md
+  languages:
+    - swift
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - async
+    - actors
+    - structured-concurrency
+    - task
+  category: Language
+swift-swiftui-mvvm:
+  path: language/swift/swiftui-mvvm.md
+  languages:
+    - swift
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - swiftui
+    - mvvm
+    - state-management
+    - combine
+  category: Language
+swift-testing:
+  path: language/swift/testing.md
+  languages:
+    - swift
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - testing
+    - xctest
+    - swift-testing
+  category: Language
+swift-error-handling:
+  path: language/swift/error-handling.md
+  languages:
+    - swift
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - errors
+    - throws
+    - result
+  category: Language
 microservices-boundaries:
   path: architecture/microservices/boundaries.md
   architectures:
