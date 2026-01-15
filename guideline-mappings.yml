@@ -1232,3 +1232,86 @@ architecture-component-based:
     - ui
     - composition
   category: Architecture
+kotlin-basics:
+  path: language/kotlin/basics.md
+  languages:
+    - kotlin
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - kotlin
+    - null-safety
+    - basics
+  category: Language
+
+kotlin-coroutines:
+  path: language/kotlin/coroutines.md
+  languages:
+    - kotlin
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - kotlin
+    - async
+    - coroutines
+  category: Language
+
+kotlin-idioms:
+  path: language/kotlin/idioms.md
+  languages:
+    - kotlin
+  levels:
+    - expert
+    - full
+  tags:
+    - kotlin
+    - scope-functions
+    - extensions
+  category: Language
+
+php-basics:
+  path: language/php/basics.md
+  languages:
+    - php
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - php
+    - types
+    - basics
+  category: Language
+
+php-oop:
+  path: language/php/oop.md
+  languages:
+    - php
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - php
+    - oop
+    - interfaces
+  category: Language
+
+php-modern:
+  path: language/php/modern.md
+  languages:
+    - php
+  levels:
+    - expert
+    - full
+  tags:
+    - php
+    - php8
+    - attributes
+  category: Language

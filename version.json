@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
   "lastUpdated": "2026-01-15",
-  "totalGuidelines": 93,
+  "totalGuidelines": 99,
   "categories": {
-    "Language": 33,
+    "Language": 39,
     "Architecture": 21,
     "Testing": 4,
     "Security": 4,
@@ -26,7 +26,9 @@
     "ruby": 2,
     "javascript": 2,
     "dart": 4,
-    "swift": 5
+    "swift": 5,
+    "kotlin": 3,
+    "php": 3
   },
   "architectures": {
     "microservices": 5,
@@ -41,10 +43,10 @@
     "component-based": 1
   },
   "levels": {
-    "basic": 21,
-    "standard": 79,
-    "expert": 93,
-    "full": 93
+    "basic": 23,
+    "standard": 83,
+    "expert": 99,
+    "full": 99
   },
   "datasources": {
     "sql": 3,
