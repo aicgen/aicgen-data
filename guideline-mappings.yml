@@ -1203,3 +1203,32 @@ patterns-gof:
     - observer
     - decorator
   category: Design Patterns
+architecture-bounded-contexts:
+  path: architecture/bounded-contexts/context-map.md
+  architectures:
+    - bounded-contexts
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - ddd
+    - boundaries
+    - context-mapping
+  category: Architecture
+
+architecture-component-based:
+  path: architecture/component-based/structure.md
+  architectures:
+    - component-based
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - components
+    - react
+    - ui
+    - composition
+  category: Architecture

@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
   "lastUpdated": "2026-01-15",
-  "totalGuidelines": 91,
+  "totalGuidelines": 93,
   "categories": {
     "Language": 33,
-    "Architecture": 19,
+    "Architecture": 21,
     "Testing": 4,
     "Security": 4,
     "Performance": 4,
@@ -36,13 +36,15 @@
     "event-driven": 2,
     "layered": 1,
     "serverless": 2,
-    "hexagonal": 1
+    "hexagonal": 1,
+    "bounded-contexts": 1,
+    "component-based": 1
   },
   "levels": {
-    "basic": 20,
-    "standard": 77,
-    "expert": 91,
-    "full": 91
+    "basic": 21,
+    "standard": 79,
+    "expert": 93,
+    "full": 93
   },
   "datasources": {
     "sql": 3,
