@@ -12,3 +12,6 @@ Programming language best practices and idioms.
 - `java/` - Java guidelines
 - `csharp/` - C# guidelines
 - `ruby/` - Ruby guidelines
+- `swift/` - Swift guidelines
+- `kotlin/` - Kotlin guidelines
+- `php/` - PHP guidelines

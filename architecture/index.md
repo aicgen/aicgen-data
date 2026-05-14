@@ -10,3 +10,5 @@ Architecture-specific guidelines and best practices.
 - `layered/` - Layered architecture
 - `hexagonal/` - Hexagonal (Ports & Adapters) architecture
 - `refactor/` - Refactoring strategies
+- `bounded-contexts/` - Bounded Contexts architecture
+- `component-based/` - Component-Based architecture

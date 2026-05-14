@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-15",
+  "totalGuidelines": 99,
+  "categories": {
+    "Language": 39,
+    "Architecture": 21,
+    "Testing": 4,
+    "Security": 4,
+    "Performance": 4,
+    "Database": 5,
+    "API Design": 4,
+    "Code Style": 2,
+    "Error Handling": 2,
+    "DevOps": 3,
+    "Best Practices": 5,
+    "Design Patterns": 6
+  },
+  "languages": {
+    "typescript": 8,
+    "python": 4,
+    "go": 2,
+    "rust": 2,
+    "java": 2,
+    "csharp": 2,
+    "ruby": 2,
+    "javascript": 2,
+    "dart": 4,
+    "swift": 5,
+    "kotlin": 3,
+    "php": 3
+  },
+  "architectures": {
+    "microservices": 5,
+    "modular-monolith": 2,
+    "clean-architecture": 1,
+    "ddd": 2,
+    "event-driven": 2,
+    "layered": 1,
+    "serverless": 2,
+    "hexagonal": 1,
+    "bounded-contexts": 1,
+    "component-based": 1
+  },
+  "levels": {
+    "basic": 23,
+    "standard": 83,
+    "expert": 99,
+    "full": 99
+  },
+  "datasources": {
+    "sql": 3,
+    "nosql": 1
+  }
+}

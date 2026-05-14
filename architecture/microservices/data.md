@@ -16,122 +16,77 @@ Each service owns its database:
 
 ## Polyglot Persistence
 
-```typescript
-// Each service uses the best database for its needs
+```text
+# Each service uses the best database for its needs
 
-// User Service - relational data, ACID transactions
-class UserRepository {
-  constructor(private postgres: PostgresClient) {}
+# User Service -> Relational (ACID, relationships)
+Repository UserRepository:
+  Method Create(user):
+    SQL "INSERT INTO users..."
 
-  async create(user: User): Promise<User> {
-    return this.postgres.query('INSERT INTO users...');
-  }
-}
+# Catalog Service -> Document (Flexible schema)
+Repository ProductRepository:
+  Method Create(product):
+    Collection("products").Insert(product)
 
-// Catalog Service - flexible document structure
-class ProductRepository {
-  constructor(private mongo: MongoClient) {}
-
-  async create(product: Product): Promise<Product> {
-    return this.mongo.collection('products').insertOne(product);
-  }
-}
-
-// Analytics Service - time-series data
-class MetricsRepository {
-  constructor(private influx: InfluxDBClient) {}
-
-  async record(metric: Metric): Promise<void> {
-    await this.influx.writePoints([metric]);
-  }
-}
+# Analytics Service -> Time-Series (High write volume)
+Repository MetricsRepository:
+  Method Record(metric):
+    InfluxDB.Write(metric)
 ```
 
 ## Eventual Consistency
 
-```typescript
-// ✅ Embrace eventual consistency for cross-service data
+```text
+# ✅ Embrace eventual consistency for cross-service data
 
-// Order created - publish event
-await orderRepository.save(order);
-await eventBus.publish('order.created', order);
+1. Order Service: Save Order -> Publish "order.created"
+2. Inventory Service: Listen "order.created" -> Reserve Inventory
 
-// Inventory service processes asynchronously
-// Data may be temporarily inconsistent - that's OK
+# Data may be temporarily inconsistent - that's OK
 
-// ✅ Use compensating actions for failures
-async function processOrder(order: Order): Promise<void> {
-  try {
-    await inventoryService.reserve(order.items);
-    await paymentService.charge(order.total);
-  } catch (error) {
-    // Compensate: release reserved inventory
-    await inventoryService.release(order.items);
-    throw error;
-  }
-}
+# ✅ Use compensating actions for failures
+Function ProcessOrder(order):
+  Try:
+    InventoryService.Reserve(order.items)
+    PaymentService.Charge(order.total)
+  Catch Error:
+    # Compensate: undo previous actions
+    InventoryService.Release(order.items)
+    Throw Error
 ```
 
 ## Data Synchronization Patterns
 
-```typescript
-// Pattern: Event Sourcing for cross-service data
-class OrderProjector {
-  @EventHandler('product.updated')
-  async handleProductUpdate(event: ProductUpdatedEvent) {
-    // Update local cache of product data
-    await this.productCache.set(event.productId, {
-      name: event.name,
-      price: event.price
-    });
-  }
-}
+```text
+# Pattern: Event Sourcing / CQRS
+Service OrderQuery:
+  On("product.updated"):
+    # Update local read-optimized copy
+    Cache.Set(event.productId, { name: event.name, price: event.price })
 
-// Pattern: Saga for distributed transactions
-class OrderSaga {
-  async execute(order: Order): Promise<void> {
-    const saga = new Saga();
-
-    saga.addStep({
-      action: () => inventoryService.reserve(order.items),
-      compensate: () => inventoryService.release(order.items)
-    });
-
-    saga.addStep({
-      action: () => paymentService.charge(order.total),
-      compensate: () => paymentService.refund(order.paymentId)
-    });
-
-    await saga.run();
-  }
-}
+# Pattern: Saga for distributed transactions
+Saga CreateOrder:
+  Step 1:
+    Action: Inventory.Reserve()
+    Compensate: Inventory.Release()
+  Step 2:
+    Action: Payment.Charge()
+    Compensate: Payment.Refund()
 ```
 
 ## Data Ownership
 
-```typescript
-// ✅ Each service is the source of truth for its data
-class UserService {
-  // Only User Service can create/update users
-  async updateEmail(userId: string, email: string): Promise<User> {
-    const user = await this.userRepository.update(userId, { email });
+```text
+# ✅ Each service is the source of truth for its data
+Service User:
+  Function UpdateEmail(userId, email):
+    Database.Update(userId, email)
+    EventBus.Publish("user.email.changed", { userId, email })
 
-    // Notify other services of the change
-    await this.eventBus.publish('user.email.changed', {
-      userId,
-      newEmail: email
-    });
-
-    return user;
-  }
-}
-
-// Other services maintain their own copies (projections)
-class OrderService {
-  @EventHandler('user.email.changed')
-  async syncUserEmail(event: UserEmailChangedEvent) {
-    // Update local cache, not the source data
-    await this.userCache.set(event.userId, { email: event.newEmail });
-  }
-}
+# Other services maintain their own copies (projections)
+Service Order:
+  On("user.email.changed"):
+    # Update local cache, never query User DB directly
+    LocalUserCache.Update(event.userId, event.email)
 ```

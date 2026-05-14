@@ -168,6 +168,298 @@ python-testing:
     - testing
     - pytest
   category: Language
+go-basics:
+  path: language/go/basics.md
+  languages:
+    - go
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - go
+    - golang
+    - fundamentals
+  category: Language
+rust-basics:
+  path: language/rust/basics.md
+  languages:
+    - rust
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - rust
+    - ownership
+    - fundamentals
+  category: Language
+java-basics:
+  path: language/java/basics.md
+  languages:
+    - java
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - java
+    - jvm
+    - fundamentals
+  category: Language
+csharp-basics:
+  path: language/csharp/basics.md
+  languages:
+    - csharp
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - csharp
+    - dotnet
+    - fundamentals
+  category: Language
+ruby-basics:
+  path: language/ruby/basics.md
+  languages:
+    - ruby
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - ruby
+    - rails
+    - fundamentals
+  category: Language
+javascript-basics:
+  path: language/javascript/basics.md
+  languages:
+    - javascript
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - javascript
+    - es6
+    - fundamentals
+  category: Language
+go-testing:
+  path: language/go/testing.md
+  languages:
+    - go
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - go
+    - testing
+    - table-driven
+  category: Language
+rust-testing:
+  path: language/rust/testing.md
+  languages:
+    - rust
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - rust
+    - testing
+    - cargo-test
+  category: Language
+java-testing:
+  path: language/java/testing.md
+  languages:
+    - java
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - java
+    - testing
+    - junit
+    - mockito
+  category: Language
+csharp-testing:
+  path: language/csharp/testing.md
+  languages:
+    - csharp
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - csharp
+    - testing
+    - xunit
+    - moq
+  category: Language
+ruby-testing:
+  path: language/ruby/testing.md
+  languages:
+    - ruby
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - ruby
+    - testing
+    - rspec
+  category: Language
+javascript-testing:
+  path: language/javascript/testing.md
+  languages:
+    - javascript
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - javascript
+    - testing
+    - jest
+  category: Language
+dart-basics:
+  path: language/dart/basics.md
+  languages:
+    - dart
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - dart
+    - fundamentals
+    - null-safety
+  category: Language
+dart-async:
+  path: language/dart/async.md
+  languages:
+    - dart
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - dart
+    - async
+    - futures
+    - streams
+  category: Language
+dart-error-handling:
+  path: language/dart/error-handling.md
+  languages:
+    - dart
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - dart
+    - errors
+    - exceptions
+  category: Language
+dart-testing:
+  path: language/dart/testing.md
+  languages:
+    - dart
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - dart
+    - testing
+    - flutter
+  category: Language
+swift-basics:
+  path: language/swift/basics.md
+  languages:
+    - swift
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - fundamentals
+    - optionals
+    - value-types
+  category: Language
+swift-concurrency:
+  path: language/swift/concurrency.md
+  languages:
+    - swift
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - async
+    - actors
+    - structured-concurrency
+    - task
+  category: Language
+swift-swiftui-mvvm:
+  path: language/swift/swiftui-mvvm.md
+  languages:
+    - swift
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - swiftui
+    - mvvm
+    - state-management
+    - combine
+  category: Language
+swift-testing:
+  path: language/swift/testing.md
+  languages:
+    - swift
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - testing
+    - xctest
+    - swift-testing
+  category: Language
+swift-error-handling:
+  path: language/swift/error-handling.md
+  languages:
+    - swift
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - swift
+    - errors
+    - throws
+    - result
+  category: Language
 microservices-boundaries:
   path: architecture/microservices/boundaries.md
   architectures:
@@ -221,6 +513,20 @@ microservices-resilience:
     - resilience
     - circuit-breaker
     - retry
+  category: Architecture
+microservices-api-gateway:
+  path: architecture/microservices/api-gateway.md
+  architectures:
+    - microservices
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - microservices
+    - api-gateway
+    - bff
+    - routing
   category: Architecture
 modular-monolith-structure:
   path: architecture/modular-monolith/structure.md
@@ -283,6 +589,19 @@ testing-integration:
     - database
     - api
   category: Testing
+testing-basics:
+  path: testing/basics.md
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - testing
+    - unit-tests
+    - assertions
+    - fundamentals
+  category: Testing
 security-injection:
   path: security/injection.md
   levels:
@@ -333,6 +652,20 @@ security-headers:
     - csp
     - https
   category: Security
+performance-basics:
+  path: performance/basics.md
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - performance
+    - optimization
+    - data-structures
+    - n-plus-one
+    - fundamentals
+  category: Performance
 performance-caching:
   path: performance/caching.md
   levels:
@@ -356,12 +689,28 @@ performance-async:
     - parallel
     - batching
   category: Performance
+database-basics:
+  path: database/basics.md
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - database
+    - crud
+    - sql
+    - queries
+    - fundamentals
+  category: Database
 database-schema:
   path: database/schema.md
   levels:
     - standard
     - expert
     - full
+  datasources:
+    - sql
   tags:
     - database
     - schema
@@ -373,12 +722,28 @@ database-indexing:
   levels:
     - expert
     - full
+  datasources:
+    - sql
   tags:
     - database
     - indexing
     - performance
     - queries
   category: Database
+api-basics:
+  path: api/basics.md
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - api
+    - http
+    - rest
+    - status-codes
+    - fundamentals
+  category: API Design
 api-rest:
   path: api/rest.md
   levels:
@@ -438,6 +803,19 @@ error-handling-strategy:
     - exceptions
     - resilience
     - retry
+  category: Error Handling
+error-handling-basics:
+  path: error-handling/basics.md
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - errors
+    - exceptions
+    - try-catch
+    - fundamentals
   category: Error Handling
 solid-principles:
   path: architecture/solid/principles.md
@@ -509,6 +887,20 @@ event-driven-patterns:
     - saga
     - event-driven
   category: Architecture
+event-driven-messaging:
+  path: architecture/event-driven/messaging.md
+  architectures:
+    - event-driven
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - messaging
+    - queues
+    - outbox
+    - delivery
+  category: Architecture
 layered-architecture:
   path: architecture/layered/layers.md
   architectures:
@@ -536,6 +928,34 @@ serverless-patterns:
     - faas
     - lambda
     - cold-start
+  category: Architecture
+serverless-best-practices:
+  path: architecture/serverless/best-practices.md
+  architectures:
+    - serverless
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - serverless
+    - optimization
+    - security
+    - monitoring
+  category: Architecture
+hexagonal-architecture:
+  path: architecture/hexagonal/ports-adapters.md
+  architectures:
+    - hexagonal
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - hexagonal
+    - ports-adapters
+    - dependency-inversion
+    - clean-code
   category: Architecture
 gui-architecture:
   path: architecture/gui/patterns.md
@@ -585,6 +1005,45 @@ devops-practices:
     - observability
     - containers
   category: DevOps
+devops-observability:
+  path: devops/observability.md
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - devops
+    - observability
+    - logging
+    - metrics
+    - tracing
+  category: DevOps
+practices-planning:
+  path: practices/planning.md
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - planning
+    - phases
+    - communication
+    - requirements
+    - approval
+  category: Best Practices
+practices-documentation:
+  path: practices/documentation.md
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - documentation
+    - organization
+    - memory-lane
+    - context
+    - structure
+  category: Best Practices
 practices-code-review:
   path: practices/code-review.md
   levels:
@@ -650,11 +1109,28 @@ database-design-patterns:
     - standard
     - expert
     - full
+  datasources:
+    - sql
   tags:
     - database
     - normalization
     - denormalization
     - soft-deletes
+  category: Database
+database-nosql:
+  path: database/nosql.md
+  levels:
+    - standard
+    - expert
+    - full
+  datasources:
+    - nosql
+  tags:
+    - database
+    - nosql
+    - mongodb
+    - dynamodb
+    - redis
   category: Database
 patterns-base:
   path: patterns/base-patterns.md
@@ -727,3 +1203,115 @@ patterns-gof:
     - observer
     - decorator
   category: Design Patterns
+architecture-bounded-contexts:
+  path: architecture/bounded-contexts/context-map.md
+  architectures:
+    - bounded-contexts
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - ddd
+    - boundaries
+    - context-mapping
+  category: Architecture
+
+architecture-component-based:
+  path: architecture/component-based/structure.md
+  architectures:
+    - component-based
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - components
+    - react
+    - ui
+    - composition
+  category: Architecture
+kotlin-basics:
+  path: language/kotlin/basics.md
+  languages:
+    - kotlin
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - kotlin
+    - null-safety
+    - basics
+  category: Language
+
+kotlin-coroutines:
+  path: language/kotlin/coroutines.md
+  languages:
+    - kotlin
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - kotlin
+    - async
+    - coroutines
+  category: Language
+
+kotlin-idioms:
+  path: language/kotlin/idioms.md
+  languages:
+    - kotlin
+  levels:
+    - expert
+    - full
+  tags:
+    - kotlin
+    - scope-functions
+    - extensions
+  category: Language
+
+php-basics:
+  path: language/php/basics.md
+  languages:
+    - php
+  levels:
+    - basic
+    - standard
+    - expert
+    - full
+  tags:
+    - php
+    - types
+    - basics
+  category: Language
+
+php-oop:
+  path: language/php/oop.md
+  languages:
+    - php
+  levels:
+    - standard
+    - expert
+    - full
+  tags:
+    - php
+    - oop
+    - interfaces
+  category: Language
+
+php-modern:
+  path: language/php/modern.md
+  languages:
+    - php
+  levels:
+    - expert
+    - full
+  tags:
+    - php
+    - php8
+    - attributes
+  category: Language

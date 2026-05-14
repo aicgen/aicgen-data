@@ -48,33 +48,27 @@ Use Domain-Driven Design to identify boundaries:
 
 ## Data Ownership
 
-```typescript
+```text
 // ✅ Good - Service owns its data
-class OrderService {
-  private orderRepository: OrderRepository;
+Class OrderService:
+  Method CreateOrder(data):
+    # Order service owns order data
+    Order = OrderRepository.Save(data)
 
-  async createOrder(data: CreateOrderDTO): Promise<Order> {
-    // Order service owns order data
-    const order = await this.orderRepository.save(data);
+    # Publish event for other services
+    EventBus.Publish("order.created", {
+      orderId: Order.id,
+      userId: Order.userId,
+      total: Order.total
+    })
 
-    // Publish event for other services
-    await this.eventBus.publish('order.created', {
-      orderId: order.id,
-      userId: order.userId,
-      total: order.total
-    });
-
-    return order;
-  }
-}
+    Return Order
 
 // ❌ Bad - Direct access to another service's database
-class OrderService {
-  async createOrder(data: CreateOrderDTO): Promise<Order> {
-    // Don't do this!
-    const user = await userDatabase.users.findOne({ id: data.userId });
-  }
-}
+Class OrderService:
+  Method CreateOrder(data):
+    # Don't do this!
+    User = UserDatabase.FindOne({ id: data.userId })
 ```
 
 ## Sizing Guidelines
