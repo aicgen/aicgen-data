@@ -5,7 +5,7 @@ This repository contains coding guidelines and best practices that power aicgen 
 ## Directory Structure
 
 ```
-data/
+aicgen-data/
 ├── guideline-mappings.yml    # Maps guideline IDs to files and filters
 ├── api/                      # API design patterns
 ├── architecture/             # Architecture patterns (clean, DDD, etc.)
@@ -18,9 +18,25 @@ data/
 ├── practices/                # Best practices
 ├── security/                 # Security guidelines
 ├── style/                    # Code style guidelines
+├── agentic/                  # Assistant capability matrix and profile limits
 ├── templates/                # Reusable templates
+├── workflows/                # SDLC lifecycle command definitions
 └── testing/                  # Testing strategies
 ```
+
+## Agentic Profiles
+
+The `agentic/` directory describes how guideline content maps into assistant-specific surfaces for Claude Code, GitHub Copilot, Antigravity, and Codex.
+
+Gemini CLI generation is removed from active targets. Use Antigravity for Google-side agentic coding profiles.
+
+Profile levels gate capability risk:
+
+- `basic`: stable instructions and rules.
+- `standard`: reusable workflows and prompt files.
+- `full`: focused agents, skills, safe lifecycle guardrail hooks, plugin packaging, and advanced documentation templates such as MCP.
+
+Test-suite execution is handled by the `/check` lifecycle command, not by generated hooks. Hook templates must not run full test suites automatically.
 
 ## Contributing Guidelines
 
@@ -30,7 +46,7 @@ Create a markdown file in the appropriate category folder:
 
 ```bash
 # Example: Adding a new TypeScript guideline
-data/language/typescript/my-guideline.md
+aicgen-data/language/typescript/my-guideline.md
 ```
 
 **Guideline Format:**
@@ -79,7 +95,6 @@ my-guideline-id:
     - typescript
   levels:
     - standard
-    - expert
     - full
   tags:
     - typescript
@@ -93,24 +108,24 @@ my-guideline-id:
 | `path` | Yes | Relative path to the guideline file |
 | `category` | Yes | Display category (Language, Architecture, Testing, etc.) |
 | `languages` | No | Which languages this applies to. Omit for all languages |
-| `levels` | No | Instruction levels: `basic`, `standard`, `expert`, `full`. Omit for all |
+| `levels` | No | Instruction levels: `basic`, `standard`, `full`. Omit for all |
 | `architectures` | No | Architecture types. Omit for all |
 | `tags` | No | Search/organization tags |
 
 ### Available Values
 
 **Languages:**
-- `typescript`, `python`, `go`, `rust`, `java`, `csharp`, `ruby`, `php`, `swift`, `kotlin`
+- `typescript`, `javascript`, `python`, `go`, `rust`, `java`, `csharp`, `ruby`, `dart`, `swift`, `kotlin`, `php`
 
 **Levels:**
 - `basic` - Essential guidelines only
 - `standard` - Common best practices
-- `expert` - Advanced patterns
-- `full` - Comprehensive coverage
+- `full` - Comprehensive coverage with advanced agentic surfaces
 
 **Architectures:**
 - `layered`, `clean-architecture`, `hexagonal`, `ddd`, `microservices`
-- `modular-monolith`, `event-driven`, `serverless`, `other`
+- `modular-monolith`, `event-driven`, `serverless`, `monorepo`
+- `bounded-contexts`, `component-based`
 
 **Categories:**
 - `Language`, `Architecture`, `Testing`, `Security`, `Performance`
@@ -128,7 +143,6 @@ typescript-decorators:
   languages:
     - typescript
   levels:
-    - expert
     - full
   tags:
     - typescript
@@ -144,7 +158,6 @@ solid-principles:
   category: Architecture
   levels:
     - standard
-    - expert
     - full
   tags:
     - solid
@@ -162,7 +175,6 @@ ddd-aggregates:
     - ddd
     - clean-architecture
   levels:
-    - expert
     - full
   tags:
     - ddd
@@ -174,17 +186,23 @@ ddd-aggregates:
 
 After adding a guideline:
 
-1. **Rebuild aicgen:**
+1. **Validate the data repo:**
    ```bash
+   scripts/validate-data
+   ```
+
+2. **Rebuild aicgen:**
+   ```bash
+   AICGEN_DATA_DIR=/path/to/aicgen-data bun run embed
    bun run build
    ```
 
-2. **Check it's loaded:**
+3. **Check it's loaded:**
    ```bash
    bun run start stats
    ```
 
-3. **Test generation:**
+4. **Test generation:**
    ```bash
    bun run start init --force
    ```

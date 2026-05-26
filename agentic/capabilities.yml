@@ -1,0 +1,150 @@
+version: 1
+assistants:
+  claude-code:
+    displayName: Claude Code
+    surfaces:
+      - id: main-instructions
+        output: CLAUDE.md
+        minLevel: basic
+        stability: stable
+        risk: passive
+        docsUrl: https://docs.claude.com/en/docs/claude-code/memory
+        limit: Keep the main file concise and reference detailed project files.
+      - id: workflow-commands
+        output: .claude/commands/*.md
+        minLevel: standard
+        stability: stable
+        risk: guided
+        docsUrl: https://docs.claude.com/en/docs/claude-code/slash-commands
+        limit: Commands are reusable prompts, not enforcement.
+      - id: subagents
+        output: .claude/agents/*.md
+        minLevel: full
+        stability: stable
+        risk: agentic
+        docsUrl: https://docs.claude.com/en/docs/claude-code/sub-agents
+        limit: Keep each subagent focused on one review job.
+      - id: skills
+        output: .claude/skills/*/SKILL.md
+        minLevel: full
+        stability: stable
+        risk: agentic
+        docsUrl: https://docs.claude.com/en/docs/claude-code/skills
+        limit: Use progressive disclosure for larger references.
+      - id: hooks
+        output: .claude/settings.json
+        minLevel: full
+        stability: stable
+        risk: side-effecting
+        docsUrl: https://docs.anthropic.com/en/docs/claude-code/hooks
+        limit: Hooks execute shell commands automatically. Do not use hooks to run full test suites; use /check for validation.
+
+  copilot:
+    displayName: GitHub Copilot
+    surfaces:
+      - id: main-instructions
+        output: .github/copilot-instructions.md
+        minLevel: basic
+        stability: stable
+        risk: passive
+        docsUrl: https://docs.github.com/en/copilot/concepts/prompting/response-customization
+        limit: Keep repository instructions concise.
+      - id: scoped-instructions
+        output: .github/instructions/*.instructions.md
+        minLevel: basic
+        stability: stable
+        risk: passive
+        docsUrl: https://docs.github.com/en/copilot/concepts/prompting/response-customization
+        limit: Use applyTo globs for relevance.
+      - id: workflow-commands
+        output: .github/instructions/workflows.instructions.md
+        minLevel: standard
+        stability: stable
+        risk: guided
+        docsUrl: https://docs.github.com/en/copilot/concepts/prompting/response-customization
+        limit: Workflow instructions are context, not guaranteed enforcement.
+      - id: prompt-files
+        output: .github/prompts/*.prompt.md
+        minLevel: standard
+        stability: stable
+        risk: guided
+        docsUrl: https://code.visualstudio.com/docs/copilot/copilot-customization
+        limit: Prompt files are reusable tasks.
+      - id: chat-modes
+        output: .github/chatmodes/*.chatmode.md
+        minLevel: full
+        stability: stable
+        risk: agentic
+        docsUrl: https://code.visualstudio.com/docs/copilot/customization/custom-chat-modes
+        limit: Chat modes depend on VS Code support and enabled tools.
+      - id: mcp-templates
+        output: .aicgen/mcp/copilot.md
+        minLevel: full
+        stability: preview
+        risk: side-effecting
+        docsUrl: https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp/extend-copilot-chat-with-mcp
+        limit: AICGEN emits documentation templates only.
+
+  antigravity:
+    displayName: Antigravity
+    surfaces:
+      - id: main-instructions
+        output: .agent/rules/instructions.md
+        minLevel: basic
+        stability: stable
+        risk: passive
+        docsUrl: https://antigravity.google/docs/rules-workflows
+        limit: Rules should be persistent and reusable.
+      - id: workflow-commands
+        output: .agent/workflows/*.md
+        minLevel: standard
+        stability: stable
+        risk: guided
+        docsUrl: https://antigravity.google/docs/rules-workflows
+        limit: Workflows should cover repeatable coding tasks.
+      - id: plugins
+        output: .agent/plugin templates
+        minLevel: full
+        stability: preview
+        risk: side-effecting
+        docsUrl: https://antigravity.google/docs/plugin-management
+        limit: Plugin management remains opt-in and is not emitted by default.
+
+  codex:
+    displayName: OpenAI Codex
+    surfaces:
+      - id: main-instructions
+        output: AGENTS.md
+        minLevel: basic
+        stability: stable
+        risk: passive
+        docsUrl: https://developers.openai.com/codex/guides/agents-md
+        limit: AGENTS.md is the first-class shared instruction file.
+      - id: skills
+        output: plugins/aicgen-sdlc/skills/*/SKILL.md
+        minLevel: standard
+        stability: stable
+        risk: agentic
+        docsUrl: https://developers.openai.com/codex/skills
+        limit: Skill descriptions should stay narrow.
+      - id: plugins
+        output: plugins/aicgen-sdlc/.codex-plugin/plugin.json
+        minLevel: standard
+        stability: stable
+        risk: agentic
+        docsUrl: https://developers.openai.com/codex/plugins/build
+        limit: Generated plugins are project-local; store publishing is out of scope.
+      - id: hooks
+        output: .codex/hooks.json
+        minLevel: full
+        stability: stable
+        risk: side-effecting
+        docsUrl: https://developers.openai.com/codex/hooks
+        limit: Hooks require user trust review before they run. Do not use hooks to run full test suites; use /aicgen-check for validation.
+      - id: mcp-templates
+        output: .aicgen/mcp/codex.md
+        minLevel: full
+        stability: stable
+        risk: side-effecting
+        docsUrl: https://developers.openai.com/codex/mcp
+        limit: AICGEN emits documentation templates only.

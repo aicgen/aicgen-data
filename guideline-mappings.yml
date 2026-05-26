@@ -17,7 +17,6 @@ typescript-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - typescript
@@ -31,7 +30,6 @@ typescript-async:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - typescript
@@ -44,7 +42,6 @@ typescript-interfaces-types:
     - typescript
   levels:
     - standard
-    - expert
     - full
   tags:
     - typescript
@@ -57,7 +54,6 @@ typescript-generics:
   languages:
     - typescript
   levels:
-    - expert
     - full
   tags:
     - typescript
@@ -70,7 +66,6 @@ typescript-error-handling:
     - typescript
   levels:
     - standard
-    - expert
     - full
   tags:
     - typescript
@@ -83,7 +78,6 @@ typescript-testing:
     - typescript
   levels:
     - standard
-    - expert
     - full
   tags:
     - typescript
@@ -96,7 +90,6 @@ typescript-config:
     - typescript
   levels:
     - standard
-    - expert
     - full
   tags:
     - typescript
@@ -108,7 +101,6 @@ typescript-performance:
   languages:
     - typescript
   levels:
-    - expert
     - full
   tags:
     - typescript
@@ -122,7 +114,6 @@ python-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - python
@@ -135,7 +126,6 @@ python-types:
     - python
   levels:
     - standard
-    - expert
     - full
   tags:
     - python
@@ -148,7 +138,6 @@ python-async:
   languages:
     - python
   levels:
-    - expert
     - full
   tags:
     - python
@@ -161,7 +150,6 @@ python-testing:
     - python
   levels:
     - standard
-    - expert
     - full
   tags:
     - python
@@ -175,7 +163,6 @@ go-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - go
@@ -189,7 +176,6 @@ rust-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - rust
@@ -203,7 +189,6 @@ java-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - java
@@ -217,7 +202,6 @@ csharp-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - csharp
@@ -231,7 +215,6 @@ ruby-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - ruby
@@ -245,7 +228,6 @@ javascript-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - javascript
@@ -258,7 +240,6 @@ go-testing:
     - go
   levels:
     - standard
-    - expert
     - full
   tags:
     - go
@@ -271,7 +252,6 @@ rust-testing:
     - rust
   levels:
     - standard
-    - expert
     - full
   tags:
     - rust
@@ -284,7 +264,6 @@ java-testing:
     - java
   levels:
     - standard
-    - expert
     - full
   tags:
     - java
@@ -298,7 +277,6 @@ csharp-testing:
     - csharp
   levels:
     - standard
-    - expert
     - full
   tags:
     - csharp
@@ -312,7 +290,6 @@ ruby-testing:
     - ruby
   levels:
     - standard
-    - expert
     - full
   tags:
     - ruby
@@ -325,7 +302,6 @@ javascript-testing:
     - javascript
   levels:
     - standard
-    - expert
     - full
   tags:
     - javascript
@@ -339,7 +315,6 @@ dart-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - dart
@@ -353,7 +328,6 @@ dart-async:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - dart
@@ -367,7 +341,6 @@ dart-error-handling:
     - dart
   levels:
     - standard
-    - expert
     - full
   tags:
     - dart
@@ -380,7 +353,6 @@ dart-testing:
     - dart
   levels:
     - standard
-    - expert
     - full
   tags:
     - dart
@@ -394,7 +366,6 @@ swift-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - swift
@@ -408,7 +379,6 @@ swift-concurrency:
     - swift
   levels:
     - standard
-    - expert
     - full
   tags:
     - swift
@@ -423,7 +393,6 @@ swift-swiftui-mvvm:
     - swift
   levels:
     - standard
-    - expert
     - full
   tags:
     - swift
@@ -438,7 +407,6 @@ swift-testing:
     - swift
   levels:
     - standard
-    - expert
     - full
   tags:
     - swift
@@ -452,7 +420,6 @@ swift-error-handling:
     - swift
   levels:
     - standard
-    - expert
     - full
   tags:
     - swift
@@ -466,7 +433,6 @@ microservices-boundaries:
     - microservices
   levels:
     - standard
-    - expert
     - full
   tags:
     - microservices
@@ -479,7 +445,6 @@ microservices-communication:
     - microservices
   levels:
     - standard
-    - expert
     - full
   tags:
     - microservices
@@ -493,7 +458,6 @@ microservices-data:
     - microservices
   levels:
     - standard
-    - expert
     - full
   tags:
     - microservices
@@ -506,7 +470,6 @@ microservices-resilience:
   architectures:
     - microservices
   levels:
-    - expert
     - full
   tags:
     - microservices
@@ -520,7 +483,6 @@ microservices-api-gateway:
     - microservices
   levels:
     - standard
-    - expert
     - full
   tags:
     - microservices
@@ -534,7 +496,6 @@ modular-monolith-structure:
     - modular-monolith
   levels:
     - standard
-    - expert
     - full
   tags:
     - modular-monolith
@@ -547,7 +508,6 @@ modular-monolith-boundaries:
     - modular-monolith
   levels:
     - standard
-    - expert
     - full
   tags:
     - modular-monolith
@@ -559,7 +519,6 @@ testing-unit-fundamentals:
   path: testing/unit-fundamentals.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - testing
@@ -570,7 +529,6 @@ testing-unit-mocking:
   path: testing/unit-mocking.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - testing
@@ -581,7 +539,6 @@ testing-unit-mocking:
 testing-integration:
   path: testing/integration.md
   levels:
-    - expert
     - full
   tags:
     - testing
@@ -594,7 +551,6 @@ testing-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - testing
@@ -607,7 +563,6 @@ security-injection:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - security
@@ -619,7 +574,6 @@ security-auth-jwt:
   path: security/auth-jwt.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - security
@@ -632,7 +586,6 @@ security-secrets:
   path: security/secrets.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - security
@@ -643,7 +596,6 @@ security-secrets:
 security-headers:
   path: security/headers.md
   levels:
-    - expert
     - full
   tags:
     - security
@@ -657,7 +609,6 @@ performance-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - performance
@@ -669,7 +620,6 @@ performance-basics:
 performance-caching:
   path: performance/caching.md
   levels:
-    - expert
     - full
   tags:
     - performance
@@ -681,7 +631,6 @@ performance-async:
   path: performance/async.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - performance
@@ -694,7 +643,6 @@ database-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - database
@@ -707,7 +655,6 @@ database-schema:
   path: database/schema.md
   levels:
     - standard
-    - expert
     - full
   datasources:
     - sql
@@ -720,7 +667,6 @@ database-schema:
 database-indexing:
   path: database/indexing.md
   levels:
-    - expert
     - full
   datasources:
     - sql
@@ -735,7 +681,6 @@ api-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - api
@@ -748,7 +693,6 @@ api-rest:
   path: api/rest.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - api
@@ -760,7 +704,6 @@ api-pagination:
   path: api/pagination.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - api
@@ -773,7 +716,6 @@ code-style-naming:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - style
@@ -784,7 +726,6 @@ code-style-organization:
   path: style/organization.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - style
@@ -796,7 +737,6 @@ error-handling-strategy:
   path: error-handling/strategy.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - errors
@@ -809,7 +749,6 @@ error-handling-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - errors
@@ -821,7 +760,6 @@ solid-principles:
   path: architecture/solid/principles.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - solid
@@ -838,7 +776,6 @@ clean-architecture-layers:
     - clean-architecture
   levels:
     - standard
-    - expert
     - full
   tags:
     - clean-architecture
@@ -852,7 +789,6 @@ ddd-tactical:
     - ddd
   levels:
     - standard
-    - expert
     - full
   tags:
     - ddd
@@ -866,7 +802,6 @@ ddd-strategic:
   architectures:
     - ddd
   levels:
-    - expert
     - full
   tags:
     - ddd
@@ -879,7 +814,6 @@ event-driven-patterns:
   architectures:
     - event-driven
   levels:
-    - expert
     - full
   tags:
     - event-sourcing
@@ -893,7 +827,6 @@ event-driven-messaging:
     - event-driven
   levels:
     - standard
-    - expert
     - full
   tags:
     - messaging
@@ -907,7 +840,6 @@ layered-architecture:
     - layered
   levels:
     - standard
-    - expert
     - full
   tags:
     - layered
@@ -921,7 +853,6 @@ serverless-patterns:
     - serverless
   levels:
     - standard
-    - expert
     - full
   tags:
     - serverless
@@ -935,7 +866,6 @@ serverless-best-practices:
     - serverless
   levels:
     - standard
-    - expert
     - full
   tags:
     - serverless
@@ -949,7 +879,6 @@ hexagonal-architecture:
     - hexagonal
   levels:
     - standard
-    - expert
     - full
   tags:
     - hexagonal
@@ -961,7 +890,6 @@ gui-architecture:
   path: architecture/gui/patterns.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - gui
@@ -974,7 +902,6 @@ feature-toggles:
   path: architecture/feature-toggles/patterns.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - feature-flags
@@ -985,7 +912,6 @@ devops-ci-cd:
   path: devops/ci-cd.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - devops
@@ -997,7 +923,6 @@ devops-ci-cd:
 devops-practices:
   path: devops/practices.md
   levels:
-    - expert
     - full
   tags:
     - devops
@@ -1009,7 +934,6 @@ devops-observability:
   path: devops/observability.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - devops
@@ -1022,7 +946,6 @@ practices-planning:
   path: practices/planning.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - planning
@@ -1035,7 +958,6 @@ practices-documentation:
   path: practices/documentation.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - documentation
@@ -1048,7 +970,6 @@ practices-code-review:
   path: practices/code-review.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - code-review
@@ -1060,7 +981,6 @@ practices-refactoring:
   path: practices/refactoring.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - refactoring
@@ -1072,7 +992,6 @@ practices-version-control:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - git
@@ -1084,7 +1003,6 @@ api-versioning:
   path: api/versioning.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - api
@@ -1095,7 +1013,6 @@ api-versioning:
 performance-caching-strategies:
   path: performance/caching-strategies.md
   levels:
-    - expert
     - full
   tags:
     - caching
@@ -1107,7 +1024,6 @@ database-design-patterns:
   path: database/design-patterns.md
   levels:
     - standard
-    - expert
     - full
   datasources:
     - sql
@@ -1121,7 +1037,6 @@ database-nosql:
   path: database/nosql.md
   levels:
     - standard
-    - expert
     - full
   datasources:
     - nosql
@@ -1136,7 +1051,6 @@ patterns-base:
   path: patterns/base-patterns.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - value-object
@@ -1148,7 +1062,6 @@ patterns-base:
 patterns-concurrency:
   path: patterns/concurrency.md
   levels:
-    - expert
     - full
   tags:
     - concurrency
@@ -1160,7 +1073,6 @@ patterns-data-access:
   path: patterns/data-access.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - repository
@@ -1171,7 +1083,6 @@ patterns-data-access:
 patterns-distribution:
   path: patterns/distribution.md
   levels:
-    - expert
     - full
   tags:
     - remote-facade
@@ -1183,7 +1094,6 @@ patterns-domain-logic:
   path: patterns/domain-logic.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - transaction-script
@@ -1194,7 +1104,6 @@ patterns-gof:
   path: patterns/gof.md
   levels:
     - standard
-    - expert
     - full
   tags:
     - gang-of-four
@@ -1209,7 +1118,6 @@ architecture-bounded-contexts:
     - bounded-contexts
   levels:
     - standard
-    - expert
     - full
   tags:
     - ddd
@@ -1224,7 +1132,6 @@ architecture-component-based:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - components
@@ -1239,7 +1146,6 @@ kotlin-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - kotlin
@@ -1253,7 +1159,6 @@ kotlin-coroutines:
     - kotlin
   levels:
     - standard
-    - expert
     - full
   tags:
     - kotlin
@@ -1266,7 +1171,6 @@ kotlin-idioms:
   languages:
     - kotlin
   levels:
-    - expert
     - full
   tags:
     - kotlin
@@ -1281,7 +1185,6 @@ php-basics:
   levels:
     - basic
     - standard
-    - expert
     - full
   tags:
     - php
@@ -1295,7 +1198,6 @@ php-oop:
     - php
   levels:
     - standard
-    - expert
     - full
   tags:
     - php
@@ -1308,7 +1210,6 @@ php-modern:
   languages:
     - php
   levels:
-    - expert
     - full
   tags:
     - php

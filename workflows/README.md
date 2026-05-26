@@ -8,6 +8,13 @@ aicgen injects a structured 6-command SDLC workflow into every generated assista
 /spec → /research → /plan → /build → /check → /ship
 ```
 
+For Codex, aicgen generates a project-local `aicgen-sdlc` plugin and exposes
+namespaced commands to avoid conflicts with built-in Codex commands:
+
+```
+/aicgen-spec → /aicgen-research → /aicgen-plan → /aicgen-build → /aicgen-check → /aicgen-ship
+```
+
 | Step | Command | Output artifact |
 |------|---------|----------------|
 | 1 | [`/spec [name]`](sdlc/spec.md) | `docs/specs/{name}.md` |
@@ -25,6 +32,19 @@ aicgen injects a structured 6-command SDLC workflow into every generated assista
 - [/build](sdlc/build.md) — Execute plan phase by phase with review checkpoints
 - [/check](sdlc/check.md) — Verify implementation against spec and run tests
 - [/ship](sdlc/ship.md) — Pre-flight checks and PR description draft
+
+## Codex plugin commands
+
+When Codex is selected in `aicgen configure` or `aicgen init`, aicgen installs
+the `aicgen-sdlc` plugin locally in the generated project. Use the namespaced
+commands in Codex:
+
+- `/aicgen-spec` — aicgen `/spec`
+- `/aicgen-research` — aicgen `/research`
+- `/aicgen-plan` — aicgen `/plan`
+- `/aicgen-build` — aicgen `/build`
+- `/aicgen-check` — aicgen `/check`
+- `/aicgen-ship` — aicgen `/ship`
 
 ## Output directory
 
@@ -48,4 +68,4 @@ docs/
 
 ## Source
 
-Command definitions are maintained in [`aicgen/data/workflows/sdlc.md`](https://github.com/aicgen/aicgen/blob/main/data/workflows/sdlc.md) and injected into every generated config at `aicgen init` time.
+Command definitions are maintained in [`aicgen-data/workflows/sdlc.md`](https://github.com/aicgen/aicgen-data/blob/main/workflows/sdlc.md) and injected into every generated config at `aicgen init` time.

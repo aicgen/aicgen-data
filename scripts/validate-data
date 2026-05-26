@@ -1,0 +1,250 @@
+#!/usr/bin/env node
+const fs = require('node:fs');
+const path = require('node:path');
+
+const root = path.resolve(__dirname, '..');
+const mappingsPath = path.join(root, 'guideline-mappings.yml');
+const workflowsPath = path.join(root, 'workflows', 'sdlc.md');
+const versionPath = path.join(root, 'version.json');
+
+const allowed = {
+  languages: new Set(['typescript', 'javascript', 'python', 'go', 'rust', 'java', 'csharp', 'ruby', 'dart', 'swift', 'kotlin', 'php']),
+  levels: new Set(['basic', 'standard', 'full']),
+  architectures: new Set(['layered', 'modular-monolith', 'microservices', 'event-driven', 'hexagonal', 'clean-architecture', 'ddd', 'serverless', 'monorepo', 'bounded-contexts', 'component-based']),
+  datasources: new Set(['sql', 'nosql', 'none']),
+};
+
+function parseMappings(content) {
+  const mappings = {};
+  let currentId = null;
+  let currentProp = null;
+
+  for (const rawLine of content.split(/\r?\n/)) {
+    const line = rawLine.replace(/\s+$/, '');
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+
+    const idMatch = line.match(/^([A-Za-z0-9_-]+):$/);
+    if (idMatch) {
+      currentId = idMatch[1];
+      mappings[currentId] = {};
+      currentProp = null;
+      continue;
+    }
+
+    const propMatch = line.match(/^  ([A-Za-z0-9_-]+):(?:\s*(.*))?$/);
+    if (propMatch && currentId) {
+      const [, prop, value] = propMatch;
+      currentProp = prop;
+      if (value && value.trim()) {
+        mappings[currentId][prop] = value.trim().replace(/^["']|["']$/g, '');
+      } else {
+        mappings[currentId][prop] = [];
+      }
+      continue;
+    }
+
+    const arrayMatch = line.match(/^    -\s+(.+)$/);
+    if (arrayMatch && currentId && currentProp) {
+      if (!Array.isArray(mappings[currentId][currentProp])) {
+        mappings[currentId][currentProp] = [];
+      }
+      mappings[currentId][currentProp].push(arrayMatch[1].trim().replace(/^["']|["']$/g, ''));
+      continue;
+    }
+
+    throw new Error(`Unsupported mapping syntax: ${rawLine}`);
+  }
+
+  return mappings;
+}
+
+function walk(dir, relative = '') {
+  const files = [];
+  for (const entry of fs.readdirSync(path.join(dir, relative), { withFileTypes: true })) {
+    const next = relative ? `${relative}/${entry.name}` : entry.name;
+    if (next.startsWith('.git/')) continue;
+    if (entry.isDirectory()) {
+      files.push(...walk(dir, next));
+    } else {
+      files.push(next);
+    }
+  }
+  return files;
+}
+
+function assertAllowedList(errors, id, prop, values) {
+  if (!values) return;
+  const list = Array.isArray(values) ? values : [values];
+  for (const value of list) {
+    if (!allowed[prop].has(value)) {
+      errors.push(`${id}.${prop} contains unsupported value: ${value}`);
+    }
+  }
+}
+
+function validateMappings(mappings) {
+  const errors = [];
+  const mappedPaths = new Set();
+
+  for (const [id, mapping] of Object.entries(mappings)) {
+    if (!mapping.path) {
+      errors.push(`${id} is missing path`);
+      continue;
+    }
+
+    mappedPaths.add(mapping.path);
+    if (!fs.existsSync(path.join(root, mapping.path))) {
+      errors.push(`${id} points to missing file: ${mapping.path}`);
+    }
+
+    assertAllowedList(errors, id, 'languages', mapping.languages);
+    assertAllowedList(errors, id, 'levels', mapping.levels);
+    assertAllowedList(errors, id, 'architectures', mapping.architectures);
+    assertAllowedList(errors, id, 'datasources', mapping.datasources);
+  }
+
+  const markdownFiles = walk(root).filter(file => file.endsWith('.md'));
+  const orphanDocs = markdownFiles.filter(file => {
+    if (mappedPaths.has(file)) return false;
+    if (file === 'README.md' || file === 'index.md') return false;
+    if (file.endsWith('/index.md')) return false;
+    if (file === 'workflows/README.md' || file === 'workflows/sdlc.md') return false;
+    if (file.startsWith('workflows/sdlc/')) return false;
+    if (file.startsWith('templates/')) return false;
+    if (file.startsWith('agentic/')) return false;
+    return true;
+  });
+
+  for (const file of orphanDocs) {
+    errors.push(`Unmapped markdown file: ${file}`);
+  }
+
+  return errors;
+}
+
+function validateLinks() {
+  const errors = [];
+  const markdownFiles = walk(root).filter(file => file.endsWith('.md'));
+  const linkPattern = /\[[^\]]+\]\(([^)]+)\)/g;
+
+  for (const file of markdownFiles) {
+    const content = fs.readFileSync(path.join(root, file), 'utf8')
+      .replace(/```[\s\S]*?```/g, '');
+    for (const match of content.matchAll(linkPattern)) {
+      const target = match[1];
+      if (/^(https?:|mailto:|#)/.test(target)) continue;
+      const cleanTarget = target.split('#')[0];
+      if (!cleanTarget) continue;
+      const resolved = path.resolve(path.dirname(path.join(root, file)), cleanTarget);
+      if (!resolved.startsWith(root) || !fs.existsSync(resolved)) {
+        errors.push(`${file} has broken link: ${target}`);
+      }
+    }
+  }
+
+  return errors;
+}
+
+function validateWorkflows() {
+  const errors = [];
+  const expected = ['spec', 'research', 'plan', 'build', 'check', 'ship'];
+  const content = fs.readFileSync(workflowsPath, 'utf8');
+  const commands = [...content.matchAll(/^## \/([A-Za-z0-9_-]+)/gm)].map(match => match[1]);
+
+  if (commands.join(',') !== expected.join(',')) {
+    errors.push(`workflows/sdlc.md commands must be ${expected.join(', ')}; found ${commands.join(', ')}`);
+  }
+
+  for (const command of expected) {
+    const commandDoc = path.join(root, 'workflows', 'sdlc', `${command}.md`);
+    if (!fs.existsSync(commandDoc)) {
+      errors.push(`Missing workflow command doc: workflows/sdlc/${command}.md`);
+    }
+  }
+
+  return errors;
+}
+
+function calculateStats(mappings) {
+  const stats = {
+    totalGuidelines: Object.keys(mappings).length,
+    totalWorkflows: 6,
+    categories: {},
+    languages: {},
+    architectures: {},
+    levels: { basic: 0, standard: 0, full: 0 },
+    datasources: {},
+  };
+
+  for (const mapping of Object.values(mappings)) {
+    if (mapping.category) {
+      stats.categories[mapping.category] = (stats.categories[mapping.category] || 0) + 1;
+    }
+    for (const language of mapping.languages || []) {
+      stats.languages[language] = (stats.languages[language] || 0) + 1;
+    }
+    for (const architecture of mapping.architectures || []) {
+      stats.architectures[architecture] = (stats.architectures[architecture] || 0) + 1;
+    }
+    for (const level of mapping.levels || ['basic', 'standard', 'full']) {
+      stats.levels[level] = (stats.levels[level] || 0) + 1;
+    }
+    for (const datasource of mapping.datasources || []) {
+      stats.datasources[datasource] = (stats.datasources[datasource] || 0) + 1;
+    }
+  }
+
+  return stats;
+}
+
+function validateVersion(mappings) {
+  const errors = [];
+  const version = JSON.parse(fs.readFileSync(versionPath, 'utf8'));
+  const expected = calculateStats(mappings);
+
+  for (const key of ['totalGuidelines', 'totalWorkflows']) {
+    if (version[key] !== expected[key]) {
+      errors.push(`version.json ${key} is ${version[key]}, expected ${expected[key]}`);
+    }
+  }
+
+  for (const group of ['categories', 'languages', 'architectures', 'levels', 'datasources']) {
+    const actual = JSON.stringify(version[group] || {});
+    const target = JSON.stringify(expected[group]);
+    if (actual !== target) {
+      errors.push(`version.json ${group} counts are stale`);
+    }
+  }
+
+  return errors;
+}
+
+function main() {
+  const errors = [];
+  for (const file of [mappingsPath, workflowsPath, versionPath]) {
+    if (!fs.existsSync(file)) {
+      errors.push(`Missing required file: ${path.relative(root, file)}`);
+    }
+  }
+
+  if (errors.length === 0) {
+    const mappings = parseMappings(fs.readFileSync(mappingsPath, 'utf8'));
+    errors.push(...validateMappings(mappings));
+    errors.push(...validateLinks());
+    errors.push(...validateWorkflows());
+    errors.push(...validateVersion(mappings));
+  }
+
+  if (errors.length > 0) {
+    console.error('aicgen-data validation failed:');
+    for (const error of errors) {
+      console.error(`- ${error}`);
+    }
+    process.exit(1);
+  }
+
+  console.log('aicgen-data validation passed');
+}
+
+main();
