@@ -2,6 +2,18 @@
 
 This repository contains coding guidelines and best practices that power aicgen configurations.
 
+## Release 1.2.0 Stats
+
+| Metric | Count |
+|--------|-------|
+| Guidelines | 99 |
+| SDLC workflows | 6 |
+| Categories | 12 |
+| Languages | 12 |
+| Architectures | 10 |
+| Datasources | 2 |
+| Profile levels | `basic`, `standard`, `full` |
+
 ## Directory Structure
 
 ```
@@ -33,7 +45,7 @@ Gemini CLI generation is removed from active targets. Use Antigravity for Google
 Profile levels gate capability risk:
 
 - `basic`: stable instructions and rules.
-- `standard`: reusable workflows and prompt files.
+- `standard`: reusable workflows, prompt files, and stable Codex SDLC skills.
 - `full`: focused agents, skills, safe lifecycle guardrail hooks, plugin packaging, and advanced documentation templates such as MCP.
 
 Test-suite execution is handled by the `/check` lifecycle command, not by generated hooks. Hook templates must not run full test suites automatically.
@@ -200,6 +212,14 @@ After adding a guideline:
 3. **Check it's loaded:**
    ```bash
    bun run start stats
+   ```
+
+   Expected 1.2.0 level stats:
+
+   ```text
+   basic: 23
+   standard: 83
+   full: 99
    ```
 
 4. **Test generation:**

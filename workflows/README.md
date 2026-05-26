@@ -35,9 +35,10 @@ namespaced commands to avoid conflicts with built-in Codex commands:
 
 ## Codex plugin commands
 
-When Codex is selected in `aicgen configure` or `aicgen init`, aicgen installs
-the `aicgen-sdlc` plugin locally in the generated project. Use the namespaced
-commands in Codex:
+When Codex is selected in `aicgen configure` or `aicgen init`, aicgen generates
+a project-local `aicgen-sdlc` plugin plus `.agents/plugins/marketplace.json`.
+Restart Codex from the generated project root, or add the marketplace manually,
+so Codex can load the plugin. Use the namespaced commands in Codex:
 
 - `/aicgen-spec` — aicgen `/spec`
 - `/aicgen-research` — aicgen `/research`
