@@ -1,5 +1,14 @@
 # TypeScript Fundamentals
 
+## Rules
+
+- Enable `strict: true` (plus `noUncheckedIndexedAccess` and `exactOptionalPropertyTypes` for new projects); never turn strictness off to silence an error.
+- Never use `any`; use `unknown` and narrow with type guards, or a generic.
+- Annotate function parameters and public return types; let inference handle locals.
+- Validate external data (HTTP, JSON, env) at runtime with a schema library; types alone do not check it.
+- Naming: `PascalCase` for types and classes (no `I` prefix), `camelCase` for values, `UPPER_SNAKE_CASE` for constants, `kebab-case` files.
+- Avoid non-null assertions (`!`) and `as` casts; fix the types instead.
+
 ## Strict Mode (Required)
 
 Always use strict mode in `tsconfig.json`:

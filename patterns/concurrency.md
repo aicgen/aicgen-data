@@ -1,5 +1,13 @@
 # Concurrency Patterns
 
+## Rules
+
+- Use optimistic locking (version or timestamp column) when conflicts are rare; retry or surface a conflict error on failure.
+- Use pessimistic locking only for short critical sections where conflicts are frequent or retries are costly; always set lock timeouts.
+- Lock a coarse-grained aggregate root instead of many fine-grained objects when they change together.
+- Keep transactions short and acquire locks in a consistent order to avoid deadlocks.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Optimistic Locking
 
 Detect conflicts on commit using version numbers.

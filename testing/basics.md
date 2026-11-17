@@ -1,5 +1,13 @@
 # Testing Basics
 
+## Rules
+
+- Test one behavior per test, with a name that states the behavior and expected outcome.
+- Structure every test as setup, execute, verify; keep each phase visible.
+- Tests must be independent, fast and deterministic: no shared mutable state, real network, real clock or test ordering.
+- Test public behavior, edge cases (empty, null, zero, negative, boundary) and error paths; do not test private details, third-party libraries or logic-free getters.
+- When fixing a bug, first write a test that fails because of it.
+
 ## Your First Unit Test
 
 A unit test verifies that a small piece of code works correctly.

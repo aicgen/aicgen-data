@@ -1,5 +1,13 @@
 # Base Patterns
 
+## Rules
+
+- Use a Value Object (immutable, equality by value) for concepts like money, email or date range instead of primitives.
+- Use Special Case (null object) to avoid scattering null checks.
+- Use Registry and Plugin sparingly: prefer explicit dependency injection to global lookups.
+- Apply a pattern only when it removes real complexity; do not add it speculatively.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Value Object
 
 Immutable object defined by its value, not identity.

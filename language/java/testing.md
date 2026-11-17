@@ -1,5 +1,13 @@
 # Java Testing (JUnit 5)
 
+## Rules
+
+- Use JUnit 5 with descriptive `@DisplayName`s, Arrange-Act-Assert, and AssertJ (or JUnit assertions) for clear failures.
+- Use `@ParameterizedTest` for input tables and `@Nested` classes to group scenarios.
+- Mock only collaborators at boundaries with Mockito; verify behavior sparingly and prefer fakes for own code.
+- Keep tests independent and fast; use Testcontainers for real databases in integration tests.
+- Test exceptions with `assertThrows` and check the message or type.
+
 ## Test Structure
 
 ```

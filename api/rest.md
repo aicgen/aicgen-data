@@ -1,5 +1,15 @@
 # REST API Design
 
+## Rules
+
+- Model resources, not actions: plural nouns, lowercase hyphenated paths, at most two or three levels of nesting.
+- Version from the start (`/api/v1/...`) and never break an existing version.
+- Keep GET, PUT and DELETE idempotent; make POST retry-safe with an idempotency key where duplicates cost money.
+- Wrap responses consistently (`data`, `meta`, `errors`) and use ISO 8601 UTC timestamps.
+- Authenticate every non-public endpoint and authorize per resource, not per route.
+- Paginate every collection and cap the page size.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Resource-Oriented URLs
 
 ```
@@ -127,11 +137,4 @@ GET /api/v1/reviews?bookId=3
 
 ## API Versioning
 
-```
-✅ Always version from the start
-/api/v1/books
-/api/v2/books
-
-❌ No version
-/api/books
-```
+Version from the start (`/api/v1/...`) and never break an existing version. Strategies, deprecation headers and migration are covered by the API versioning guideline.

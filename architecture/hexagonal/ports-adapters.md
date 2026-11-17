@@ -1,5 +1,14 @@
 # Hexagonal Architecture (Ports & Adapters)
 
+## Rules
+
+- Keep the domain and application core free of framework and infrastructure imports.
+- Driving (primary) ports are what the core offers (use cases); driven (secondary) ports are what the core needs (repositories, gateways, clocks). Define both in the core.
+- Adapters implement or call ports: HTTP controllers, CLI and consumers drive the core; databases, queues and external APIs are driven adapters.
+- Dependencies point inward: adapters depend on ports, never the reverse. Wire everything in a single composition root.
+- Test the core with in-memory adapters; test each real adapter against its port contract.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Core Principle
 
 The application core (domain logic) is isolated from external concerns through ports (interfaces) and adapters (implementations).

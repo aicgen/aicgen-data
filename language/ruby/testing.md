@@ -1,5 +1,13 @@
 # Ruby Testing (RSpec)
 
+## Rules
+
+- Use RSpec with `describe`/`context`/`it` that read as sentences; one expectation concept per example.
+- Use `let` (lazy) and `subject`, and prefer factories (FactoryBot) over fixtures; build data with sensible defaults.
+- Stub only boundaries and prefer `instance_double` / `class_double` so doubles stay in sync with real APIs.
+- Use shared examples for repeated behavior and keep specs independent and order-agnostic.
+- Avoid testing private methods or implementation details.
+
 ## Project Structure
 
 ```

@@ -1,5 +1,13 @@
 # Domain Logic Patterns
 
+## Rules
+
+- Choose by complexity: Transaction Script for simple procedural logic, Domain Model for rich rules, Service Layer to coordinate use cases and transactions.
+- Put business rules in the domain objects (Domain Model), not in controllers or the service layer.
+- Keep the service layer thin: orchestration, transactions and authorization, not rules.
+- Start simple and move to a richer model when conditionals multiply.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Transaction Script
 
 Procedural approach - one procedure per operation.

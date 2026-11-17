@@ -1,5 +1,12 @@
 # Kotlin Basics
 
+## Rules
+
+- Prefer `val` over `var` and immutable collections (`List`, `Map`) over mutable ones.
+- Avoid `!!`; handle nullability with `?.`, `?:`, `let`, or an early return.
+- Use data classes for value holders, sealed classes or interfaces for closed hierarchies, and `when` as an exhaustive expression.
+- Follow the Kotlin coding conventions and run ktlint or detekt.
+
 ## Null Safety
 
 Kotlin distinguishes between nullable and non-nullable types.

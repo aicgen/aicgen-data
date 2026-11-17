@@ -1,5 +1,14 @@
 # API Pagination
 
+## Rules
+
+- Paginate every collection endpoint, with a default page size (about 20) and a hard maximum (about 100).
+- Prefer cursor or keyset pagination for large or changing data; offset pagination degrades with depth and skips or repeats rows under writes.
+- Order by a stable, unique key (for example `created_at, id`) and index it.
+- Return the next cursor or links and whether more results exist; treat cursors as opaque.
+- Reject invalid page or limit values with 400 instead of silently clamping unexpected input.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Always Paginate Collections
 
 ```typescript

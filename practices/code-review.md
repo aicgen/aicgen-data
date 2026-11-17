@@ -1,5 +1,13 @@
 # Code Review Practices
 
+## Rules
+
+- Review for correctness, security, tests, error handling and design; leave style to linters and formatters.
+- Keep pull requests small and focused, with a description of what changed, why, and how it was tested.
+- Give specific, kind feedback: explain the reason, suggest an alternative, prefix minor points with `nit:`.
+- Review promptly (within a working day) and approve with minor comments rather than blocking.
+- Authors self-review the diff and run the checks before requesting review.
+
 ## Review Checklist
 
 - [ ] Code follows project style guidelines

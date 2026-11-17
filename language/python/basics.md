@@ -1,5 +1,14 @@
 # Python Fundamentals
 
+## Rules
+
+- Follow PEP 8 (`snake_case` functions and variables, `PascalCase` classes, `UPPER_SNAKE_CASE` constants) and let a formatter (ruff or black) enforce it.
+- Use f-strings, comprehensions for simple transformations (switch to a loop when nested or branching), and `pathlib` for paths.
+- Manage resources with `with` context managers; never leave files, locks or connections to garbage collection.
+- Never use mutable default arguments (`def f(x=[])`); use `None` and create inside the function.
+- Catch specific exceptions (never bare `except:`), and use `raise ... from err` to keep the cause.
+- Prefer dataclasses or Pydantic models over loose dicts for structured data, and compare to `None` with `is`.
+
 ## PEP 8 Style Guide
 
 ```python

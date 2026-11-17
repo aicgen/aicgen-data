@@ -1,5 +1,14 @@
 # DDD Strategic Patterns
 
+## Rules
+
+- Build a ubiquitous language with domain experts and use the same terms in code, tests and docs.
+- Split the domain into bounded contexts, each with its own model; the same word may mean different things in different contexts.
+- Make relationships between contexts explicit with a context map (shared kernel, customer/supplier, conformist, anticorruption layer, open host service).
+- Protect your model with an anticorruption layer when integrating with legacy or external models.
+- Invest most in the core domain; buy or simplify supporting and generic subdomains.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Ubiquitous Language
 
 Use the same terminology in code, documentation, and conversations.

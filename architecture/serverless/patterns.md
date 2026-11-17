@@ -1,5 +1,14 @@
 # Serverless Architecture
 
+## Rules
+
+- Keep functions small, single-purpose and stateless; store state in managed services.
+- Initialize clients and connections outside the handler so warm invocations reuse them.
+- Make handlers idempotent: triggers can deliver the same event more than once.
+- Minimize package size and dependencies to reduce cold starts.
+- Set explicit timeouts, memory sizes and least-privilege IAM roles per function.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Key Principles
 
 - **Stateless functions**: Each invocation is independent

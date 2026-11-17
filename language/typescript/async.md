@@ -1,5 +1,13 @@
 # Async/Await Patterns
 
+## Rules
+
+- Use `async/await`, not `.then` chains; always `await` or return promises (enable `no-floating-promises`).
+- Run independent work with `Promise.all`; use `Promise.allSettled` when partial failure is acceptable.
+- Wrap awaited calls in try/catch only where you can handle or translate the error; never leave a promise unhandled.
+- Retry only transient, idempotent operations with exponential backoff and a limit; add timeouts with `AbortSignal.timeout`.
+- Do not use `async` in `forEach`; use a `for...of` loop or `Promise.all(map(...))`.
+
 ## Prefer async/await
 
 Always use async/await over promise chains:

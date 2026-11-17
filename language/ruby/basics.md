@@ -1,5 +1,13 @@
 # Ruby Fundamentals
 
+## Rules
+
+- Follow the Ruby Style Guide and enforce it with RuboCop: `snake_case` methods and variables, `CamelCase` classes, `SCREAMING_SNAKE_CASE` constants.
+- Use idiomatic Ruby: blocks and `Enumerable` methods, safe navigation (`&.`), keyword arguments, and `frozen_string_literal: true`.
+- Rescue specific exceptions (never bare `rescue Exception`), and define custom error classes inheriting from `StandardError`.
+- Keep methods short, prefer composition and modules over deep inheritance, and avoid monkey patching core classes.
+- In Rails keep controllers thin and models focused; put business logic in service or domain objects.
+
 ## Project Structure (Rails)
 
 ```

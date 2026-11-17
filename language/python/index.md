@@ -8,3 +8,4 @@ This directory contains Python-specific coding guidelines.
 - **types.md** - Type hints, TypedDict, Protocols, generics
 - **async.md** - async/await, asyncio, parallel execution
 - **testing.md** - pytest fixtures, parametrized tests, mocking
+- **tooling.md** - pyproject, uv, ruff, pyright, modern idioms

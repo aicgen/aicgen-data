@@ -85,6 +85,28 @@ function assertAllowedList(errors, id, prop, values) {
   }
 }
 
+// The description is what an assistant reads to decide whether to load a
+// guideline, so it must say what the guideline covers and when to use it.
+const MAX_GUIDELINE_TOKENS = 3000;
+const DESCRIPTION_MIN = 40;
+const DESCRIPTION_MAX = 280;
+
+function validateDescription(errors, id, description) {
+  if (!description) {
+    errors.push(`${id} is missing description`);
+    return;
+  }
+  if (description.length < DESCRIPTION_MIN || description.length > DESCRIPTION_MAX) {
+    errors.push(`${id}.description must be ${DESCRIPTION_MIN}-${DESCRIPTION_MAX} characters (found ${description.length})`);
+  }
+  if (!/\bUse when\b/.test(description)) {
+    errors.push(`${id}.description must say when to use the guideline ("Use when ...")`);
+  }
+  if (/["\\]/.test(description)) {
+    errors.push(`${id}.description must not contain double quotes or backslashes`);
+  }
+}
+
 function validateMappings(mappings) {
   const errors = [];
   const mappedPaths = new Set();
@@ -100,10 +122,34 @@ function validateMappings(mappings) {
       errors.push(`${id} points to missing file: ${mapping.path}`);
     }
 
+    validateDescription(errors, id, mapping.description);
     assertAllowedList(errors, id, 'languages', mapping.languages);
     assertAllowedList(errors, id, 'levels', mapping.levels);
     assertAllowedList(errors, id, 'architectures', mapping.architectures);
     assertAllowedList(errors, id, 'datasources', mapping.datasources);
+  }
+
+  // Guidelines are loaded into a model's context on demand, so keep each one
+  // focused (about 2,500 tokens is the target; 3,000 is the hard cap) and give
+  // each a distinct title so skill listings are not ambiguous.
+  const titles = new Map();
+  for (const [id, mapping] of Object.entries(mappings)) {
+    if (!mapping.path || !fs.existsSync(path.join(root, mapping.path))) continue;
+    const content = fs.readFileSync(path.join(root, mapping.path), 'utf8');
+    const tokens = Math.ceil(content.length / 4);
+    if (tokens > MAX_GUIDELINE_TOKENS) {
+      errors.push(`${id} is about ${tokens} tokens; split or trim it to under ${MAX_GUIDELINE_TOKENS}`);
+    }
+    if (!/^## (Rules|Principles|Policy|Quick Checklist|Checklist)\b/m.test(content)) {
+      errors.push(`${id} needs a rules-first section (## Rules, ## Principles, ## Policy or ## Checklist)`);
+    }
+    const title = (content.match(/^#\s+(.+)$/m) || [])[1]?.trim().toLowerCase();
+    if (title) {
+      if (titles.has(title)) {
+        errors.push(`${id} and ${titles.get(title)} share the title "${title}"`);
+      }
+      titles.set(title, id);
+    }
   }
 
   const markdownFiles = walk(root).filter(file => file.endsWith('.md'));

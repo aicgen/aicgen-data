@@ -1,5 +1,15 @@
 # Clean Architecture
 
+## Rules
+
+- Dependencies point inward only: entities, then use cases, then interface adapters, then frameworks and drivers. Inner code never imports outer code.
+- Keep entities and use cases free of framework, database and HTTP types.
+- Define interfaces (ports, repositories) in the inner layer and implement them in the outer layer.
+- Cross boundaries with simple data structures (DTOs), never with entities or framework objects.
+- Controllers translate input into a use-case call and format the output; they contain no business rules.
+- Test use cases with in-memory fakes, without frameworks or a database.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Core Principle
 
 Dependencies point inward. Inner layers know nothing about outer layers.

@@ -1,5 +1,13 @@
 # Go Testing
 
+## Rules
+
+- Use table-driven tests with `t.Run` subtests and clear case names.
+- Mark helpers with `t.Helper()`, use `t.Cleanup` and `t.TempDir`, and call `t.Parallel()` only when tests share no state.
+- Test behavior through small interfaces and hand-written fakes rather than heavy mocking frameworks.
+- Run `go test -race ./...` and use `testing.B` benchmarks (and `b.ReportAllocs`) for performance claims.
+- Prefer standard `testing` with `cmp.Diff` over assertion libraries; keep golden files in `testdata/`.
+
 ## Test File Structure
 
 ```

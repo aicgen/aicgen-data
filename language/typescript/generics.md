@@ -1,5 +1,13 @@
 # TypeScript Generics
 
+## Rules
+
+- Add a generic only when it relates two or more types (input to output); otherwise use a concrete type.
+- Constrain type parameters with `extends` so the body can use their members.
+- Name type parameters meaningfully (`TItem`, `TKey`) when there is more than one, and give defaults where useful.
+- Prefer simple generics over deeply nested conditional or mapped types; complex type-level code is hard to read and slow to check.
+- Never use `any` inside generics; use `unknown`.
+
 ## Basic Generic Functions
 
 ```typescript

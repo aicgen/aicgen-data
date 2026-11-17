@@ -1,5 +1,14 @@
 # Java Fundamentals
 
+## Rules
+
+- Use a standard Maven or Gradle layout and target a current LTS (17 or 21+); use records, `var` (when the type is obvious), sealed types, switch expressions and text blocks.
+- Name classes `PascalCase`, methods and variables `camelCase`, constants `UPPER_SNAKE_CASE`; packages are lowercase.
+- Prefer immutability: `final` fields, records and unmodifiable collections (`List.of`).
+- Never return `null` for collections; use `Optional` for return values only (not fields or parameters).
+- Catch specific exceptions, never swallow them, close resources with try-with-resources, and use unchecked exceptions for programming errors.
+- Use constructor injection and program to interfaces.
+
 ## Project Structure (Maven/Gradle)
 
 ```

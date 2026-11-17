@@ -1,32 +1,40 @@
 {
   "name": "Block sensitive file access",
-  "description": "Prevent reading or modifying sensitive files",
+  "description": "Prevent reading or modifying sensitive files. Matchers match tool names only; the handler-level `if` field filters by path. Exit code 2 blocks the call and sends stderr to the model.",
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Read(.env*)",
+        "matcher": "Read",
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Blocked: Sensitive file access not allowed' && exit 2"
+            "if": "Read(.env*)",
+            "command": "echo 'Blocked: Sensitive file access not allowed' >&2; exit 2"
+          },
+          {
+            "type": "command",
+            "if": "Read(secrets/**)",
+            "command": "echo 'Blocked: Secrets directory is protected' >&2; exit 2"
           }
         ]
       },
       {
-        "matcher": "Read(secrets/**)",
+        "matcher": "Write",
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Blocked: Secrets directory is protected' && exit 2"
+            "if": "Write(.env*)",
+            "command": "echo 'Blocked: Cannot modify environment files' >&2; exit 2"
           }
         ]
       },
       {
-        "matcher": "Write(.env*)",
+        "matcher": "Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Blocked: Cannot modify environment files' && exit 2"
+            "if": "Edit(.env*)",
+            "command": "echo 'Blocked: Cannot modify environment files' >&2; exit 2"
           }
         ]
       }

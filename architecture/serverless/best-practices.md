@@ -1,5 +1,15 @@
 # Serverless Best Practices
 
+## Rules
+
+- One function per responsibility, with a thin handler that parses the event and calls plain, testable business code.
+- Reduce cold starts: small bundles, lazy-load heavy modules, initialize outside the handler, and use provisioned concurrency only where latency demands it.
+- Never store state or sessions on the function instance; use external stores.
+- Use dead-letter queues, retries and idempotency keys for asynchronous triggers.
+- Apply least-privilege roles per function, keep secrets in a secret manager, and validate every event payload.
+- Emit structured logs, metrics and traces, and set cost and concurrency limits.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Function Design
 
 ### Single Responsibility

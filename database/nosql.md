@@ -1,5 +1,15 @@
 # NoSQL Database Patterns
 
+## Rules
+
+- Model for access patterns first: list the queries, then design documents or keys to serve them.
+- Embed data that is read together and bounded in size; reference data that grows without bound or is shared.
+- Design for eventual consistency and idempotent writes (version fields or conditional writes); use transactions only where required.
+- Index deliberately (compound indexes, order matters) and avoid unbounded scans.
+- Set TTLs for temporary data and use retries with exponential backoff and jitter on throttling.
+- DynamoDB: design partition keys for even distribution and use a single-table design only when access patterns are stable.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Document Databases (MongoDB, CouchDB)
 
 ### Schema Design

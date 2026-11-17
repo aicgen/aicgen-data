@@ -1,5 +1,13 @@
 # JavaScript Fundamentals
 
+## Rules
+
+- Use modern JavaScript: ES modules, `const` by default (then `let`; never `var`), arrow functions, destructuring, template literals, optional chaining and nullish coalescing.
+- Use `===` and `!==` exclusively, and check `Number.isNaN` explicitly.
+- Use `async/await`, always handle rejections, and never leave a promise floating.
+- Prefer immutable updates and array methods (`map`, `filter`, `reduce`) over mutation and manual loops.
+- Throw `Error` instances (never strings) and validate external input; consider TypeScript or JSDoc types for larger code.
+
 ## Project Structure
 
 ```

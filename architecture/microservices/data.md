@@ -1,5 +1,13 @@
 # Microservices Data Management
 
+## Rules
+
+- Database per service; share data through APIs or events, never through a shared database.
+- Accept eventual consistency across services and design UX and APIs for it.
+- Use sagas (orchestrated or choreographed) with compensating actions instead of distributed transactions.
+- Keep local read copies updated from events when a service needs another service's data frequently; treat them as caches, not truth.
+- Publish events reliably (transactional outbox) and make handlers idempotent.
+
 ## Database Per Service
 
 ```

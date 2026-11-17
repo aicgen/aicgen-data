@@ -1,8 +1,16 @@
 # Documentation Organization
 
+## Rules
+
+- Keep the project root minimal (README, license, config); put documentation under `docs/`.
+- Organize docs by feature or scope, not by document type, and link related documents with relative links.
+- Keep the root README short and link to detail; record architecture decisions as ADRs.
+- Maintain a short project-context file (for example `docs/planning/memory-lane.md`) with the current objective, decisions and next steps, and update it at milestones.
+- Update documentation in the same change as the code it describes; do not duplicate information across documents.
+
 ## Keep Root Clean
 
-**RULE: Documentation must NOT clutter the project root.**
+Keep documentation out of the project root.
 
 ```
 ❌ BAD: Root folder mess
@@ -68,7 +76,7 @@ docs/
 
 ## Memory Lane Document
 
-**CRITICAL: Maintain context across sessions**
+Maintain context across sessions:
 
 ### Purpose
 When AI context limit is reached, reload from memory lane to restore working context.

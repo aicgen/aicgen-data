@@ -1,5 +1,13 @@
 # TypeScript Error Handling
 
+## Rules
+
+- Throw `Error` subclasses (never strings) with a stable `code`, and keep the original error as `cause`.
+- Type caught values as `unknown` and narrow with `instanceof` before using them.
+- Use a `Result` type for expected failures and exceptions for unexpected ones.
+- Handle errors centrally (Express error middleware or equivalent) and map them to responses without leaking internals.
+- Always handle promise rejections; never leave a `catch` block empty.
+
 ## Custom Error Classes
 
 ```typescript

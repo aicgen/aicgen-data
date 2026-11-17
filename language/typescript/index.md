@@ -12,3 +12,4 @@ TypeScript-specific best practices for Claude Code.
 - `testing.md` - Testing TypeScript code
 - `config.md` - tsconfig.json best practices
 - `performance.md` - Performance optimization
+- **tooling.md** - Node LTS and ESM, strict tsconfig, schema validation, ESLint/Prettier, Vitest

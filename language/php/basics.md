@@ -1,5 +1,12 @@
 # PHP Basics
 
+## Rules
+
+- Start every file with `declare(strict_types=1);` and target a supported PHP version (8.2 or newer).
+- Declare parameter, return and property types; avoid `mixed`, and use union, nullable and `never` types where they fit.
+- Follow PSR-12 and PSR-4 autoloading, and run PHP-CS-Fixer or Pint and PHPStan.
+- Use exceptions for errors, never suppress with `@`, and never trust input: use prepared statements and escape output.
+
 ## Strict Types
 
 Always enable strict typing in new files to prevent unexpected type coercion.

@@ -1,8 +1,17 @@
 # Planning Best Practices
 
+## Rules
+
+- Before non-trivial work, state the goal, constraints and approach, and confirm it with the requester.
+- Ask when requirements are ambiguous (edge cases, error handling, performance, security) instead of assuming.
+- Break work into phases with a deliverable each (foundation, core, integration, polish) and check in after each phase.
+- Present options with trade-offs, not a single fait accompli.
+- Record decisions and the reasoning behind them.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Plan Before Implementation
 
-**ALWAYS design and plan before writing code:**
+Design and plan before writing non-trivial code:
 
 1. **Understand Requirements**
    - Clarify the goal and scope
@@ -26,7 +35,7 @@
 
 ## Never Make Assumptions
 
-**CRITICAL: When in doubt, ASK:**
+When requirements are unclear, ask before assuming:
 
 ```typescript
 // ❌ BAD: Assuming what user wants

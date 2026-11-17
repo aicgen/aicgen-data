@@ -1,5 +1,13 @@
 # TypeScript Testing
 
+## Rules
+
+- Structure tests as Arrange-Act-Assert with one behavior per test, named by behavior.
+- Test through the public API and observable behavior, not private members or call counts.
+- Use fakes or `jest.fn()` / `vi.fn()` doubles only at boundaries (network, database, clock); reset them between tests.
+- Keep tests independent and deterministic: fresh data per test, fake timers for time, no real network.
+- Type test data with factories or builders, and avoid `any` and casts in tests too.
+
 ## Test Structure: Arrange-Act-Assert
 
 ```typescript

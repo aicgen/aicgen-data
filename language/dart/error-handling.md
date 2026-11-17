@@ -1,5 +1,12 @@
 # Error Handling in Dart
 
+## Rules
+
+- Throw `Exception` subclasses for recoverable errors and use `Error` types only for programming bugs; never throw plain strings.
+- Catch specific types with `on` clauses, rethrow with `rethrow` (keeps the stack trace), and never swallow errors.
+- Use a `Result`/sealed class for expected failures; validate inputs at boundaries.
+- Use `assert` for development-time checks, and in Flutter report errors through `FlutterError.onError` and `PlatformDispatcher.instance.onError`.
+
 ## Custom Exceptions
 
 ```dart

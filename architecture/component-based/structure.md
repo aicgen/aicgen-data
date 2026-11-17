@@ -1,5 +1,13 @@
 # Component-Based Architecture
 
+## Rules
+
+- Build the UI from small, reusable components with a single purpose and explicit props or inputs.
+- Structure components in layers (atoms, molecules, organisms, templates, pages) and keep dependencies pointing from pages down to atoms.
+- Keep presentational components pure and put data fetching and state in container components or hooks.
+- Lift state only as far as needed; use a store for truly shared state.
+- Compose rather than inherit, and keep components accessible and tested in isolation.
+
 ## Core Principle
 
 Build the application as a composition of reusable, self-contained components. Common in frontend (React/Vue/Flutter) and mobile development.

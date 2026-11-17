@@ -1,5 +1,13 @@
 # TypeScript Types & Interfaces
 
+## Rules
+
+- Use `interface` for object shapes that may be extended and `type` for unions, intersections, tuples and mapped types.
+- Model variants with discriminated unions and handle them exhaustively (`never` check in the default branch).
+- Prefer `readonly` and immutable data; use `satisfies` to check a value against a type without widening it.
+- Use built-in utility types (`Partial`, `Pick`, `Omit`, `Record`, `ReturnType`) instead of duplicating shapes.
+- Write type guards (`value is T`) for narrowing `unknown`; avoid `any`.
+
 ## Prefer Interfaces for Public APIs
 
 ```typescript

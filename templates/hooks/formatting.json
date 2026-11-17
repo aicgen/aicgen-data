@@ -1,23 +1,14 @@
 {
   "name": "Auto-format on file write",
-  "description": "Automatically format code files after writing",
+  "description": "Format TypeScript/JavaScript (prettier) and Rust (cargo fmt) files after Claude edits them. The file path is read from the tool call JSON on stdin; there is no file-path environment variable. The command never fails the tool call.",
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "Write(src/**/*.ts)",
+        "matcher": "Write|Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "npx prettier --write \"${CLAUDE_FILE}\" 2>/dev/null || true"
-          }
-        ]
-      },
-      {
-        "matcher": "Write(src/**/*.tsx)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "npx prettier --write \"${CLAUDE_FILE}\" 2>/dev/null || true"
+            "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const f=JSON.parse(d).tool_input.file_path||'';const e=f.split('.').pop();const c=['ts','tsx','js','jsx'].includes(e)?'npx --no-install prettier --write '+JSON.stringify(f):e==='rs'?'cargo fmt':'';if(c){require('child_process').spawnSync(c,{shell:true,stdio:'ignore'})}}catch(x){}});\""
           }
         ]
       }

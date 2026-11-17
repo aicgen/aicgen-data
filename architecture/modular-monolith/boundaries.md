@@ -1,5 +1,14 @@
 # Modular Monolith Boundaries
 
+## Rules
+
+- Modules communicate only through public interfaces or domain events, never through each other's internals or tables.
+- Do not join across module tables; call the other module's interface or keep a local read model fed by events.
+- Use domain events for loose coupling and avoid circular dependencies between modules (extract a shared abstraction or an event if one appears).
+- Export the minimum: types and functions other modules actually need.
+- Check boundaries automatically in CI (dependency rules, import linting).
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## High Cohesion, Low Coupling
 
 ```typescript

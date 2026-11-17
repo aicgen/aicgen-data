@@ -1,4 +1,14 @@
-# Caching Strategies
+# Cache Implementations
+
+Concrete in-memory, Redis and memoization code. For which pattern to use (cache-aside, write-through) and how to invalidate, see `caching-strategies.md`.
+
+## Rules
+
+- Every cache entry has a TTL; never cache without an expiry or an invalidation path.
+- Namespace keys (`user:{id}`) and keep them deterministic.
+- Treat the cache as optional: a miss or an outage must fall back to the source of truth.
+- Never cache secrets or per-user data under a shared key.
+
 
 ## In-Memory Caching
 
@@ -63,49 +73,6 @@ async function updateUser(id: string, data: Partial<User>) {
 }
 ```
 
-## HTTP Caching
-
-```typescript
-// Cache-Control headers
-app.get('/api/products', (req, res) => {
-  res.set('Cache-Control', 'public, max-age=300'); // 5 minutes
-  res.json(products);
-});
-
-// ETag for conditional requests
-app.get('/api/user/:id', async (req, res) => {
-  const user = await getUser(req.params.id);
-  const etag = generateETag(user);
-
-  res.set('ETag', etag);
-
-  if (req.headers['if-none-match'] === etag) {
-    return res.status(304).end(); // Not Modified
-  }
-
-  res.json(user);
-});
-```
-
-## Cache-Aside Pattern
-
-```typescript
-// Also called "lazy loading"
-async function getProduct(id: string): Promise<Product> {
-  // 1. Check cache
-  const cached = await redis.get(`product:${id}`);
-  if (cached) return JSON.parse(cached);
-
-  // 2. Cache miss - load from database
-  const product = await db.findProduct(id);
-
-  // 3. Store in cache
-  await redis.setex(`product:${id}`, 600, JSON.stringify(product));
-
-  return product;
-}
-```
-
 ## Memoization
 
 ```typescript
@@ -127,26 +94,4 @@ const calculateDiscount = memoize((price: number, tier: string) => {
   // Complex calculation
   return result;
 });
-```
-
-## Cache Invalidation Strategies
-
-```typescript
-// Time-based expiry
-await redis.setex(key, 300, value); // Expires after 5 minutes
-
-// Event-based invalidation
-async function updateProduct(id: string, data: ProductUpdate) {
-  await db.updateProduct(id, data);
-  await redis.del(`product:${id}`);
-  await redis.del('products:list'); // Invalidate list cache too
-}
-
-// Cache warming
-async function warmCache() {
-  const popularProducts = await db.getMostViewed(100);
-  for (const product of popularProducts) {
-    await redis.setex(`product:${product.id}`, 3600, JSON.stringify(product));
-  }
-}
 ```

@@ -1,5 +1,13 @@
 # Version Control Patterns
 
+## Rules
+
+- Prefer trunk-based development or GitHub Flow with short-lived branches; use Git Flow only for scheduled, versioned releases.
+- Make commits small and atomic, with a clear subject (imperative, under about 72 characters) and a body that explains why; use Conventional Commits prefixes if the project does.
+- Rebase or merge main before pushing; never force-push shared branches.
+- Land changes through pull requests with required checks; delete merged branches.
+- Tag releases with semantic versions.
+
 ## Branching Strategies
 
 ### GitHub Flow

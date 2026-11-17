@@ -1,5 +1,13 @@
 # Microservices Communication
 
+## Rules
+
+- Use synchronous calls (HTTP/gRPC) for queries that need an immediate answer and asynchronous events for notifications and workflows.
+- Minimize call chains: a request that fans through many services is slow and fragile.
+- Version APIs and events, apply the tolerant reader pattern (ignore unknown fields), and make consumer-driven contract tests part of CI.
+- Every remote call needs a timeout, retries with backoff only for idempotent operations, and a circuit breaker.
+- Propagate correlation and trace IDs on every call and message.
+
 ## Synchronous vs Asynchronous
 
 ```text

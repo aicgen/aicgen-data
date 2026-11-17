@@ -2,11 +2,11 @@
 
 This repository contains coding guidelines and best practices that power aicgen configurations.
 
-## Release 1.2.0 Stats
+## Release 2.0.0 Stats
 
 | Metric | Count |
 |--------|-------|
-| Guidelines | 99 |
+| Guidelines | 116 |
 | SDLC workflows | 6 |
 | Categories | 12 |
 | Languages | 12 |
@@ -49,6 +49,32 @@ Profile levels gate capability risk:
 - `full`: focused agents, skills, safe lifecycle guardrail hooks, plugin packaging, and advanced documentation templates such as MCP.
 
 Test-suite execution is handled by the `/check` lifecycle command, not by generated hooks. Hook templates must not run full test suites automatically.
+
+## Context Budgets
+
+Instruction files are loaded into the model's context window, so aicgen keeps always-on files small and delivers each guideline only when it is relevant.
+
+| Tier | What | Examples |
+|------|------|----------|
+| Always-on | Role, commands, and an index of guideline names. Never guideline bodies. | `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md`, `.agents/rules/aicgen-instructions.md` |
+| Scoped | One file per language, style, error-handling and testing guideline, loaded when matching files are touched | `.claude/rules/*.md` (`paths:`), `.github/instructions/*.instructions.md` (`applyTo`), `.agents/rules/aicgen-*.md` (`trigger: glob`) |
+| On-demand | One skill per remaining guideline (security, architecture, API, database, DevOps, performance...). Only name and description are always visible. | `.claude/skills/`, `.github/skills/`, `.agents/skills/`, Antigravity `trigger: model_decision` rules |
+
+Limits aicgen checks when generating (`aicgen init` prints a summary):
+
+- Claude Code: `CLAUDE.md` under ~200 lines.
+- Codex: `AGENTS.md` under 32 KiB (hard limit).
+- Antigravity: rule files under 24,000 bytes (oversized guidelines are split into parts); every rule needs `trigger` frontmatter.
+- Agent Skills: `SKILL.md` body under 5,000 tokens and 500 lines; skill names up to 64 characters.
+- Language-agnostic guidelines are localized at generation time: fenced examples in a programming language other than the project's (and sections titled `Rust: ...`, `Python`, etc.) are removed. Language-neutral blocks (sql, bash, yaml, json, pseudocode) are kept, so tag code fences accurately.
+- Always-on token budget by profile level: basic ~1,500, standard ~2,500, full ~4,000 (estimated at 4 characters per token).
+
+When writing guidelines:
+
+- Keep each file focused: aim for under ~2,500 tokens. `scripts/validate-data` fails above 3,000.
+- Start with a short `## Rules` list of imperative, checkable statements; put examples after it.
+- Use code only where it shows something prose cannot, and prefer one good example over several variants.
+- Give every guideline a distinct title and a specific `description` (see Mapping Fields). Overlapping guidelines should link to each other rather than repeat content.
 
 ## Contributing Guidelines
 
@@ -102,6 +128,7 @@ Add your guideline to `guideline-mappings.yml`:
 ```yaml
 my-guideline-id:
   path: language/typescript/my-guideline.md
+  description: "What the guideline prescribes. Use when <the situations that should load it>."
   category: Language
   languages:
     - typescript
@@ -118,6 +145,7 @@ my-guideline-id:
 | Field | Required | Description |
 |-------|----------|-------------|
 | `path` | Yes | Relative path to the guideline file |
+| `description` | Yes | One line, 40-280 characters, saying what the guideline covers and ending with `Use when ...`. Assistants read only this to decide whether to load the guideline, so name the concrete situations and keywords. No double quotes or backslashes. |
 | `category` | Yes | Display category (Language, Architecture, Testing, etc.) |
 | `languages` | No | Which languages this applies to. Omit for all languages |
 | `levels` | No | Instruction levels: `basic`, `standard`, `full`. Omit for all |
@@ -214,14 +242,6 @@ After adding a guideline:
    bun run start stats
    ```
 
-   Expected 1.2.0 level stats:
-
-   ```text
-   basic: 23
-   standard: 83
-   full: 99
-   ```
-
 4. **Test generation:**
    ```bash
    bun run start init --force
@@ -229,7 +249,8 @@ After adding a guideline:
 
 ## Guideline Quality Checklist
 
-- [ ] Clear, descriptive title
+- [ ] Distinct, descriptive title and a `description` ending in "Use when ..."
+- [ ] Rules first, examples second; under ~2,500 tokens
 - [ ] Actionable instructions
 - [ ] Code examples (good and bad)
 - [ ] Appropriate language/level targeting

@@ -1,5 +1,14 @@
 # C# Fundamentals
 
+## Rules
+
+- Enable nullable reference types and treat warnings as errors; target a current .NET LTS.
+- Follow .NET naming: `PascalCase` for types, methods and properties, `camelCase` for locals and parameters, `_camelCase` private fields, `I` prefix for interfaces.
+- Use records for immutable data, pattern matching, `required` and `init`, and file-scoped namespaces.
+- Use async/await end to end with `CancellationToken`; never block with `.Result` or `.Wait()`, and name async methods with the `Async` suffix.
+- Use dependency injection through constructors and the built-in container; avoid static state and service locators.
+- Throw specific exceptions, dispose resources with `using`, and never catch `Exception` without rethrowing or logging.
+
 ## Project Structure
 
 ```

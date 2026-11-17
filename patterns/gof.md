@@ -1,5 +1,14 @@
 # Gang of Four Patterns
 
+## Rules
+
+- Use a pattern to solve a concrete design problem, never because it exists; prefer simple code first.
+- Prefer composition and interfaces over inheritance; Strategy and Decorator replace many subclass hierarchies.
+- Creational: Factory Method or Builder for complex construction; avoid Singletons (use dependency injection instead).
+- Behavioral: Strategy for interchangeable algorithms, Observer for event notification, Command for undoable or queued actions.
+- Many patterns are language features in modern languages (closures, enums, iterators); use the built-in form.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Creational
 
 ### Factory Method

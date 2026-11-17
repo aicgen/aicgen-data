@@ -1,5 +1,14 @@
 # Feature Toggles
 
+## Rules
+
+- Classify each toggle (release, experiment, ops, permission) and give each a name, owner and expiry.
+- Remove release toggles promptly after full rollout; stale toggles are technical debt.
+- Keep toggle checks at the edges of the code (one decision point), not scattered through business logic.
+- Default to off, test both states, and make toggles changeable without a deploy.
+- Never use a toggle as a security control or ship unfinished work behind one without tests.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Toggle Types
 
 ### Release Toggles

@@ -1,5 +1,14 @@
 # Go Fundamentals
 
+## Rules
+
+- Keep the standard layout: `cmd/<app>` for entry points, `internal/` for private code, small packages with short lowercase names.
+- Check every error; wrap with context using `fmt.Errorf("...: %w", err)` and inspect with `errors.Is` / `errors.As`. Never ignore an error with `_`.
+- Accept interfaces and return structs; define interfaces where they are used and keep them small.
+- Pass `context.Context` as the first parameter of anything that blocks, does I/O or can be cancelled.
+- Every goroutine needs a clear way to stop; avoid leaks, protect shared data with channels or `sync`, and run tests with `-race`.
+- Run `gofmt`, `go vet` and `golangci-lint`; exported names need doc comments.
+
 ## Project Structure
 
 ```

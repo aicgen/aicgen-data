@@ -1,6 +1,8 @@
 ---
-model: "claude-sonnet-4-5"
-description: "Reviews architectural decisions and patterns"
+name: architecture-reviewer
+description: "Reviews architectural decisions and patterns. Use when changes touch module boundaries, layering or service communication."
+tools: Read, Grep, Glob, Bash
+model: sonnet
 ---
 
 # Architecture Reviewer

@@ -1,5 +1,14 @@
 # Database Schema Design
 
+## Rules
+
+- Name tables in plural snake_case and columns in singular snake_case, and keep one convention across the schema.
+- Give every table a primary key and `created_at` / `updated_at` columns; use UUIDs or ULIDs when IDs cross systems.
+- Enforce integrity in the database: NOT NULL, UNIQUE, CHECK and foreign keys, not only in application code.
+- Choose exact types (`DECIMAL` for money, `TIMESTAMPTZ` for times, never float for currency); size text columns deliberately.
+- Normalize to third normal form first, and denormalize only for a measured read-performance need.
+- Change schema only through versioned, reversible migrations, and make them backward-compatible with running code.
+
 ## Naming Conventions
 
 ```sql

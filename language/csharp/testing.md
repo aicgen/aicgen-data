@@ -1,5 +1,13 @@
 # C# Testing (xUnit)
 
+## Rules
+
+- Use xUnit with Arrange-Act-Assert, one behavior per test, and `[Theory]` with `[InlineData]` for tables.
+- Mock collaborators at boundaries (Moq or NSubstitute); prefer fakes for own code and verify interactions sparingly.
+- Write async tests as `async Task`, never `async void`.
+- Use FluentAssertions or built-in asserts for readable failures, and use `WebApplicationFactory` for ASP.NET Core integration tests.
+- Keep tests independent: no shared mutable state across test classes unless explicitly in a collection fixture.
+
 ## Test Structure
 
 ```

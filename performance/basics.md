@@ -1,5 +1,14 @@
 # Performance Basics
 
+## Rules
+
+- Measure first: profile to find the real bottleneck, fix the largest one, then measure again. Write clear code before optimizing.
+- Use the right data structure: hash map or set for lookups and membership, not a list scan inside a loop.
+- Eliminate N+1 queries with joins, eager loading or batched IN queries.
+- Fetch only the columns and rows you need, and paginate or stream large result sets instead of loading them all.
+- Do I/O asynchronously, run independent operations in parallel, and batch writes.
+- Hoist invariant work out of loops, cache expensive repeated results, and index the columns that queries filter and join on.
+
 ## Choose the Right Data Structure
 
 Different data structures have different speeds for different operations.
