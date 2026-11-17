@@ -1,5 +1,14 @@
 # GUI Architecture Patterns
 
+## Rules
+
+- Separate presentation from business logic with MVC, MVP or MVVM; do not put business rules or I/O in views.
+- In MVVM the view model exposes observable state and commands, and the view binds to it; the view model has no reference to the view.
+- Keep views passive and as free of logic as possible so logic stays unit-testable.
+- Prefer small, composable components with explicit inputs and outputs over large screens with shared mutable state.
+- Choose one pattern per application and apply it consistently.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## MVC (Model-View-Controller)
 
 ```typescript

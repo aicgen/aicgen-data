@@ -1,5 +1,13 @@
 # DevOps Practices
 
+## Rules
+
+- Define infrastructure as code, version it, review it, and prefer immutable infrastructure.
+- Build small container images with multi-stage builds, run as a non-root user, and pin base image versions.
+- Log structured JSON with a correlation ID, expose metrics, and implement liveness and readiness endpoints.
+- Alert on user-visible symptoms and keep runbooks for incidents.
+- Manage secrets in a secret manager, never in images or repositories.
+
 ## Infrastructure as Code
 
 ```text

@@ -1,5 +1,13 @@
 # API Gateway
 
+## Rules
+
+- Use a gateway for cross-cutting edge concerns only: routing, authentication, rate limiting, TLS and aggregation. Keep business logic out of it.
+- Use a backend-for-frontend (BFF) per client type when clients need different shapes.
+- Do not make the gateway a single point of failure: run it redundantly and monitor it.
+- Authenticate at the gateway and still authorize in each service.
+- Version the public API at the gateway and forward correlation IDs.
+
 ## Overview
 
 An API Gateway acts as a single entry point for a group of microservices. It handles cross-cutting concerns and routes requests to the appropriate backend services.

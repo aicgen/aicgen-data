@@ -1,5 +1,13 @@
 # Service Boundaries
 
+## Rules
+
+- Draw boundaries around business capabilities (bounded contexts), not technical layers.
+- Each service owns its data; no other service reads its tables.
+- A service should be owned by one team and deployable independently; if two services always change and deploy together, merge them.
+- Prefer a few coarse services over many tiny ones; start with a modular monolith if boundaries are unclear.
+- Communicate only through published APIs and events.
+
 ## Defining Service Boundaries
 
 Each service should own a specific business capability:

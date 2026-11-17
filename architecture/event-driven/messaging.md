@@ -1,5 +1,15 @@
 # Event-Driven Messaging
 
+## Rules
+
+- Distinguish commands (one handler, may fail), events (facts, many subscribers) and queries (read-only).
+- Use the transactional outbox pattern to publish events atomically with the state change; never write to the database and the broker separately.
+- Assume at-least-once delivery: consumers must be idempotent (deduplicate by message ID).
+- Configure retries with backoff, a dead-letter queue and alerting for poison messages.
+- Include a correlation ID, schema version and timestamp in every message.
+- Keep message payloads small and stable; do not leak internal models.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Message Types
 
 ### Commands

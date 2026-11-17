@@ -1,5 +1,14 @@
 # Microservices Resilience
 
+## Rules
+
+- Set an explicit timeout on every remote call.
+- Retry only idempotent operations, with exponential backoff and jitter and a retry budget; never retry in a tight loop.
+- Use circuit breakers to stop calling a failing dependency and fail fast with a fallback.
+- Isolate resources with bulkheads (separate pools) so one slow dependency cannot exhaust everything.
+- Degrade gracefully: serve cached or partial results when non-critical dependencies fail.
+- Expose liveness and readiness checks and test failure modes (chaos or fault-injection tests).
+
 ## Circuit Breaker Pattern
 
 ```text

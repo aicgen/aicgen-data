@@ -1,5 +1,13 @@
 # Async Programming in Dart
 
+## Rules
+
+- Use `async/await` and `Future`; always `await` or deliberately `unawaited(...)` futures.
+- Run independent futures with `Future.wait`; use `Stream` for sequences of events and cancel `StreamSubscription`s in `dispose`.
+- Move CPU-heavy work to an `Isolate` (`Isolate.run`) so the UI isolate does not jank.
+- Always handle errors on futures and streams, and add timeouts with `.timeout`.
+- In Flutter, check `mounted` before using `BuildContext` after an `await`.
+
 ## Futures and async/await
 
 ```dart

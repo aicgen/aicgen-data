@@ -1,5 +1,13 @@
 # Database Basics
 
+## Rules
+
+- Always use parameterized queries; never concatenate user input into SQL.
+- Never run UPDATE or DELETE without a WHERE clause; preview with a SELECT first and use a transaction.
+- Select only the columns you need (not `SELECT *`) and always bound large reads with LIMIT or pagination.
+- Handle empty results explicitly and check affected row counts after writes.
+- Use transactions for multi-step changes that must succeed or fail together.
+
 ## CRUD Operations
 
 CRUD = Create, Read, Update, Delete

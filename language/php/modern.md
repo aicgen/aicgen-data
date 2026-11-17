@@ -1,5 +1,12 @@
 # Modern PHP
 
+## Rules
+
+- Use constructor property promotion, `readonly`, enums, `match` (instead of `switch`), named arguments and the nullsafe operator `?->`.
+- Use attributes for metadata instead of docblock annotations where the framework supports them.
+- Use first-class callable syntax (`strlen(...)`) and typed class constants where available.
+- Keep up with PHP releases; rector can automate upgrades.
+
 ## Attributes
 
 Use Attributes (PHP 8+) instead of PHPDoc annotations.

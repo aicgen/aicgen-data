@@ -1,5 +1,13 @@
 # TypeScript Configuration
 
+## Rules
+
+- Start from strict settings: `strict`, `noUncheckedIndexedAccess`, `noImplicitOverride`, `forceConsistentCasingInFileNames`, `skipLibCheck` only if needed.
+- Use `moduleResolution` matching the runtime (`NodeNext` for Node ESM, `Bundler` for bundlers) and set `target` to the oldest runtime you support.
+- Use `paths` aliases only if the bundler or runtime resolves them too; keep one shared base config and extend it per package.
+- In monorepos use `references` with `composite` and build with `tsc -b`.
+- Keep build output (`outDir`) and generated files out of source control.
+
 ## tsconfig.json Best Practices
 
 ```json

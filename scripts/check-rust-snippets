@@ -1,0 +1,103 @@
+#!/usr/bin/env node
+/**
+ * Compile-check the Rust code blocks in language/rust/*.md.
+ *
+ * - Blocks tagged exactly ```rust must compile with the standard library only
+ *   (edition 2024). Blocks that define `fn main` are also run; blocks that
+ *   contain `#[test]` are built with the test harness and run.
+ * - Blocks tagged ```rust,ignore (fragments, third-party crates) and every
+ *   other language are skipped.
+ *
+ * Requires `rustc` on PATH. Exits 0 with a notice when rustc is missing and
+ * --require is not passed, so contributors without Rust can still run validate-data.
+ *
+ * Usage: scripts/check-rust-snippets [--require] [file.md ...]
+ */
+import { spawnSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(__dirname, '..');
+const args = process.argv.slice(2);
+const require_ = args.includes('--require');
+const files = args.filter(a => !a.startsWith('--'));
+
+const rustc = spawnSync('rustc', ['--version'], { encoding: 'utf8' });
+if (rustc.status !== 0) {
+  if (require_) {
+    console.error('rustc not found on PATH');
+    process.exit(1);
+  }
+  console.log('check-rust-snippets: rustc not found, skipping');
+  process.exit(0);
+}
+
+const targets = files.length
+  ? files.map(f => path.resolve(f))
+  : fs
+      .readdirSync(path.join(root, 'language', 'rust'))
+      .filter(f => f.endsWith('.md'))
+      .map(f => path.join(root, 'language', 'rust', f));
+
+function extractBlocks(file) {
+  const lines = fs.readFileSync(file, 'utf8').split(/\r?\n/);
+  const blocks = [];
+  let current = null;
+  lines.forEach((line, index) => {
+    const fence = line.match(/^```(.*)$/);
+    if (fence && !current) {
+      current = { info: fence[1].trim(), start: index + 2, body: [] };
+    } else if (fence && current) {
+      blocks.push(current);
+      current = null;
+    } else if (current) {
+      current.body.push(line);
+    }
+  });
+  return blocks.filter(b => b.info === 'rust');
+}
+
+const work = fs.mkdtempSync(path.join(os.tmpdir(), 'aicgen-rust-'));
+const failures = [];
+let checked = 0;
+
+for (const file of targets) {
+  const rel = path.relative(root, file);
+  for (const block of extractBlocks(file)) {
+    const code = block.body.join('\n');
+    const isBin = /\bfn main\s*\(/.test(code);
+    const isTest = /#\[(tokio::)?test\]/.test(code);
+    const src = path.join(work, `s${checked}.rs`);
+    const out = path.join(work, `s${checked}`);
+    fs.writeFileSync(src, `#![allow(dead_code, unused, clippy::all)]\n${code}\n`);
+    checked += 1;
+
+    const flags = ['--edition', '2024', '-o', out, '-A', 'warnings'];
+    if (isTest) flags.push('--test');
+    else flags.push('--crate-type', isBin ? 'bin' : 'lib');
+
+    const compile = spawnSync('rustc', [...flags, src], { encoding: 'utf8' });
+    if (compile.status !== 0) {
+      failures.push(`${rel}:${block.start} failed to compile\n${compile.stderr}`);
+      continue;
+    }
+    if (isBin || isTest) {
+      const run = spawnSync(out, [], { encoding: 'utf8' });
+      if (run.status !== 0) {
+        failures.push(`${rel}:${block.start} failed at runtime\n${run.stdout}${run.stderr}`);
+      }
+    }
+  }
+}
+
+fs.rmSync(work, { recursive: true, force: true });
+
+if (failures.length) {
+  console.error(`check-rust-snippets: ${failures.length} of ${checked} blocks failed`);
+  for (const failure of failures) console.error(`\n- ${failure}`);
+  process.exit(1);
+}
+console.log(`check-rust-snippets: ${checked} Rust blocks compiled (${rustc.stdout.trim()})`);

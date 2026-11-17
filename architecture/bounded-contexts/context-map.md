@@ -1,5 +1,14 @@
 # Bounded Contexts
 
+## Rules
+
+- Give each bounded context one team, one model and one clearly owned data store; do not share tables across contexts.
+- Integrate through published contracts (APIs or events), never by reaching into another context's internals.
+- Choose the relationship pattern deliberately: partnership, shared kernel (small), customer/supplier, conformist, or anticorruption layer.
+- Use an anticorruption layer to translate foreign models at the boundary.
+- Keep a context map document up to date.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Core Principle
 
 Divide the domain into logical boundaries where a specific model applies. Each context has its own ubiquitous language, data model, and rules.

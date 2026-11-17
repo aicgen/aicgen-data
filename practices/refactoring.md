@@ -1,5 +1,13 @@
 # Refactoring Patterns
 
+## Rules
+
+- Refactor only with passing tests; add characterization tests first if there are none.
+- Change behavior or structure, never both in one commit; make small steps and run the tests after each.
+- Target real smells: long methods, duplication, primitive obsession, feature envy; leave code that works and is rarely touched.
+- Keep refactoring commits separate from feature work so they are easy to review and revert.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Common Code Smells
 
 ### Long Method

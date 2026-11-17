@@ -1,5 +1,14 @@
 # Layered Architecture
 
+## Rules
+
+- Layers are presentation, domain (business logic) and data access; upper layers depend only on the layer directly below.
+- Never skip layers or call upward; do not let controllers talk to the database.
+- Keep business rules in the domain layer, not in controllers or repositories.
+- Define repository interfaces in the domain and implement them in the data layer so the domain does not depend on persistence.
+- Use DTOs at layer boundaries and keep ORM entities out of API responses.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Layer Structure
 
 ```

@@ -1,5 +1,15 @@
 # Database Indexing
 
+## Rules
+
+- Index columns used in WHERE, JOIN, ORDER BY and foreign keys that real queries filter on; confirm with `EXPLAIN ANALYZE` before and after.
+- Put equality columns first in a composite index, then range columns; an index on (a, b) does not help queries on b alone.
+- Do not index every column: each index slows writes and uses space. Skip low-cardinality columns unless partial.
+- Use partial and unique indexes to enforce rules and shrink indexes.
+- Review unused and duplicate indexes periodically (for example `pg_stat_user_indexes`) and drop them.
+- Reuse connections through a pool rather than opening one per query.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## When to Add Indexes
 
 ```sql

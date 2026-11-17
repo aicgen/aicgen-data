@@ -1,5 +1,13 @@
 # Distribution Patterns
 
+## Rules
+
+- Use DTOs to carry data across process boundaries; keep them flat, serializable and free of behavior.
+- Use a Remote Facade to offer coarse-grained calls and reduce network round trips.
+- Use Gateways to wrap external systems behind an interface you control, and Service Stubs to replace them in tests.
+- Version contracts and never expose domain internals across boundaries.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Remote Facade
 
 Coarse-grained interface to reduce network calls.

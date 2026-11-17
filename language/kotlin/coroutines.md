@@ -1,5 +1,13 @@
 # Kotlin Coroutines
 
+## Rules
+
+- Use structured concurrency: launch coroutines in a lifecycle-bound scope (`viewModelScope`, `lifecycleScope`, `coroutineScope`), never `GlobalScope`.
+- Make blocking work `suspend` and move it to the right dispatcher with `withContext`; inject dispatchers so tests can replace them.
+- Never swallow `CancellationException`; rethrow it, and keep `try/catch` narrow around suspend calls.
+- Use `async`/`await` for parallel results and `launch` for fire-and-forget work with error handling (`CoroutineExceptionHandler` or `supervisorScope`).
+- Expose `Flow` for streams and collect it lifecycle-aware.
+
 ## Suspend Functions
 
 Functions that can pause and resume execution without blocking the thread.

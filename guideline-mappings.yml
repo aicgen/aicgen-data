@@ -12,6 +12,7 @@
 
 typescript-basics:
   path: language/typescript/basics.md
+  description: "Strict-mode TypeScript fundamentals: annotations, avoiding any, type guards, naming. Use when writing or reviewing TypeScript code."
   languages:
     - typescript
   levels:
@@ -25,6 +26,7 @@ typescript-basics:
   category: Language
 typescript-async:
   path: language/typescript/async.md
+  description: "async/await, parallel execution with Promise.all, failure handling and retry in TypeScript. Use when writing promises, async functions or concurrent I/O in TypeScript."
   languages:
     - typescript
   levels:
@@ -38,6 +40,7 @@ typescript-async:
   category: Language
 typescript-interfaces-types:
   path: language/typescript/interfaces-types.md
+  description: "Interfaces vs type aliases, discriminated unions, utility types and type guards. Use when modelling data shapes or public types in TypeScript."
   languages:
     - typescript
   levels:
@@ -51,6 +54,7 @@ typescript-interfaces-types:
   category: Language
 typescript-generics:
   path: language/typescript/generics.md
+  description: "Generic functions and interfaces, constraints, mapped types and default type parameters. Use when writing reusable generic TypeScript code."
   languages:
     - typescript
   levels:
@@ -62,6 +66,7 @@ typescript-generics:
   category: Language
 typescript-error-handling:
   path: language/typescript/error-handling.md
+  description: "Custom error classes, async error handling, Result types and a centralized handler in TypeScript. Use when throwing, catching or propagating errors in TypeScript."
   languages:
     - typescript
   levels:
@@ -74,6 +79,7 @@ typescript-error-handling:
   category: Language
 typescript-testing:
   path: language/typescript/testing.md
+  description: "TypeScript test structure (Arrange-Act-Assert), test doubles, independent tests, one condition per test. Use when writing or changing TypeScript tests."
   languages:
     - typescript
   levels:
@@ -86,6 +92,7 @@ typescript-testing:
   category: Language
 typescript-config:
   path: language/typescript/config.md
+  description: "tsconfig.json settings, path aliases, project references and per-environment configs. Use when creating or editing tsconfig or the TypeScript build setup."
   languages:
     - typescript
   levels:
@@ -98,6 +105,7 @@ typescript-config:
   category: Language
 typescript-performance:
   path: language/typescript/performance.md
+  description: "Data-structure choice, avoiding N+1 queries, parallelism, memoization and batching in TypeScript. Use when optimizing slow TypeScript code."
   languages:
     - typescript
   levels:
@@ -107,8 +115,24 @@ typescript-performance:
     - performance
     - optimization
   category: Language
+typescript-tooling:
+  path: language/typescript/tooling.md
+  description: "TypeScript runtime and module system, strict tsconfig, ESLint and Prettier, tests, dependencies and a final checklist. Use when setting up a TypeScript project or running its quality gate."
+  languages:
+    - typescript
+  levels:
+    - standard
+    - full
+  tags:
+    - typescript
+    - tooling
+    - tsconfig
+    - eslint
+    - esm
+  category: Language
 python-basics:
   path: language/python/basics.md
+  description: "PEP 8 style, f-strings, comprehensions, context managers and Pythonic patterns. Use when writing or reviewing Python code."
   languages:
     - python
   levels:
@@ -122,6 +146,7 @@ python-basics:
   category: Language
 python-types:
   path: language/python/types.md
+  description: "Type hints, modern 3.10+ syntax, TypedDict, Protocol, generics and mypy. Use when adding or fixing type annotations in Python."
   languages:
     - python
   levels:
@@ -135,6 +160,7 @@ python-types:
   category: Language
 python-async:
   path: language/python/async.md
+  description: "asyncio patterns: gather, async context managers, timeouts, cancellation and semaphores. Use when writing async Python code."
   languages:
     - python
   levels:
@@ -146,6 +172,7 @@ python-async:
   category: Language
 python-testing:
   path: language/python/testing.md
+  description: "pytest structure, fixtures, parametrized tests, mocking and configuration. Use when writing or changing Python tests."
   languages:
     - python
   levels:
@@ -156,8 +183,24 @@ python-testing:
     - testing
     - pytest
   category: Language
+python-tooling:
+  path: language/python/tooling.md
+  description: "Python project layout, uv, ruff, typing, pytest, dependency security and a final checklist. Use when setting up a Python project or running its quality gate."
+  languages:
+    - python
+  levels:
+    - standard
+    - full
+  tags:
+    - python
+    - tooling
+    - uv
+    - ruff
+    - pyproject
+  category: Language
 go-basics:
   path: language/go/basics.md
+  description: "Go project layout, naming, error handling, concurrency and common patterns. Use when writing or reviewing Go code."
   languages:
     - go
   levels:
@@ -169,8 +212,24 @@ go-basics:
     - golang
     - fundamentals
   category: Language
+go-tooling:
+  path: language/go/tooling.md
+  description: "Go modules and toolchain, the required gate (vet, golangci-lint, govulncheck), modern idioms and testing. Use when setting up a Go project or running its quality gate."
+  languages:
+    - go
+  levels:
+    - standard
+    - full
+  tags:
+    - go
+    - tooling
+    - golangci-lint
+    - govulncheck
+    - slog
+  category: Language
 rust-basics:
   path: language/rust/basics.md
+  description: "Rust edition 2024 setup, project layout, ownership and borrowing, iterators, pattern matching and naming. Use when writing or reviewing Rust code."
   languages:
     - rust
   levels:
@@ -179,11 +238,128 @@ rust-basics:
     - full
   tags:
     - rust
-    - ownership
     - fundamentals
+    - ownership
+    - edition-2024
+  category: Language
+rust-error-handling:
+  path: language/rust/error-handling.md
+  description: "Typed library errors with thiserror, anyhow in applications, the ? operator, when to panic and error messages. Use when writing Result-returning Rust code."
+  languages:
+    - rust
+  levels:
+    - basic
+    - standard
+    - full
+  tags:
+    - rust
+    - errors
+    - result
+    - thiserror
+    - anyhow
+  category: Language
+rust-types-traits:
+  path: language/rust/types-traits.md
+  description: "Newtypes, enums for state, typestate, builders, generics vs impl Trait vs dyn Trait and conversion traits. Use when designing Rust types, traits or public APIs."
+  languages:
+    - rust
+  levels:
+    - standard
+    - full
+  tags:
+    - rust
+    - types
+    - traits
+    - newtype
+    - generics
+  category: Language
+rust-async:
+  path: language/rust/async.md
+  description: "Tokio concurrency: never block the runtime, spawning, timeouts, cancellation safety, locks across await and channels. Use when writing async or multi-threaded Rust."
+  languages:
+    - rust
+  levels:
+    - standard
+    - full
+  tags:
+    - rust
+    - async
+    - tokio
+    - concurrency
+  category: Language
+rust-testing:
+  path: language/rust/testing.md
+  description: "Rust unit, integration and doc tests, table-driven tests, fakes over mocks and property tests. Use when writing or changing Rust tests."
+  languages:
+    - rust
+  levels:
+    - standard
+    - full
+  tags:
+    - rust
+    - testing
+    - cargo-test
+    - proptest
+  category: Language
+rust-tooling:
+  path: language/rust/tooling.md
+  description: "Rust required gate (fmt, clippy, test), Cargo.toml lints and profiles, features, dependency supply chain, MSRV and CI. Use when setting up a Rust project, editing Cargo.toml or configuring CI."
+  languages:
+    - rust
+  levels:
+    - standard
+    - full
+  tags:
+    - rust
+    - cargo
+    - clippy
+    - rustfmt
+    - ci
+    - supply-chain
+  category: Language
+rust-unsafe-ffi:
+  path: language/rust/unsafe-ffi.md
+  description: "Rules for unsafe Rust: safety documentation, edition 2024 changes, common undefined behaviour, FFI to and from C and Miri. Use when writing unsafe code or FFI bindings."
+  languages:
+    - rust
+  levels:
+    - full
+  tags:
+    - rust
+    - unsafe
+    - ffi
+    - miri
+  category: Language
+rust-performance:
+  path: language/rust/performance.md
+  description: "Measure-first Rust optimization: algorithms, allocation, iterators, hashing, I/O and parallelism. Use when profiling or speeding up Rust code."
+  languages:
+    - rust
+  levels:
+    - full
+  tags:
+    - rust
+    - performance
+    - benchmarks
+    - profiling
+  category: Language
+rust-web-cli:
+  path: language/rust/web-cli.md
+  description: "Rust web services and CLIs: axum handlers and middleware, graceful shutdown, sqlx, configuration and clap. Use when building a Rust HTTP service or command-line tool."
+  languages:
+    - rust
+  levels:
+    - full
+  tags:
+    - rust
+    - axum
+    - clap
+    - tracing
+    - sqlx
   category: Language
 java-basics:
   path: language/java/basics.md
+  description: "Java project structure, naming, modern Java 17+ features, exceptions, Optional and streams. Use when writing or reviewing Java code."
   languages:
     - java
   levels:
@@ -197,6 +373,7 @@ java-basics:
   category: Language
 csharp-basics:
   path: language/csharp/basics.md
+  description: "C# project structure, naming, modern C# features, async/await, LINQ, exceptions and dependency injection. Use when writing or reviewing C# code."
   languages:
     - csharp
   levels:
@@ -210,6 +387,7 @@ csharp-basics:
   category: Language
 ruby-basics:
   path: language/ruby/basics.md
+  description: "Ruby and Rails project structure, naming, idiomatic Ruby, error handling and collections. Use when writing or reviewing Ruby code."
   languages:
     - ruby
   levels:
@@ -223,6 +401,7 @@ ruby-basics:
   category: Language
 javascript-basics:
   path: language/javascript/basics.md
+  description: "Modern ES6+ JavaScript: project structure, async/await, classes, modules, error handling and array methods. Use when writing or reviewing JavaScript code."
   languages:
     - javascript
   levels:
@@ -236,6 +415,7 @@ javascript-basics:
   category: Language
 go-testing:
   path: language/go/testing.md
+  description: "Go table-driven tests, subtests, parallelism, helpers, interface-based fakes, benchmarks and coverage. Use when writing or changing Go tests."
   languages:
     - go
   levels:
@@ -246,20 +426,9 @@ go-testing:
     - testing
     - table-driven
   category: Language
-rust-testing:
-  path: language/rust/testing.md
-  languages:
-    - rust
-  levels:
-    - standard
-    - full
-  tags:
-    - rust
-    - testing
-    - cargo-test
-  category: Language
 java-testing:
   path: language/java/testing.md
+  description: "JUnit 5 structure, assertions, parameterized and nested tests, Mockito and lifecycle hooks. Use when writing or changing Java tests."
   languages:
     - java
   levels:
@@ -271,8 +440,24 @@ java-testing:
     - junit
     - mockito
   category: Language
+java-tooling:
+  path: language/java/tooling.md
+  description: "Java baseline, Maven or Gradle quality gate, coding practices and Spring Boot notes. Use when setting up a Java project or running its quality gate."
+  languages:
+    - java
+  levels:
+    - standard
+    - full
+  tags:
+    - java
+    - tooling
+    - maven
+    - gradle
+    - records
+  category: Language
 csharp-testing:
   path: language/csharp/testing.md
+  description: "xUnit structure, assertions, theories, test classes and collections, Moq and async tests. Use when writing or changing C# tests."
   languages:
     - csharp
   levels:
@@ -284,8 +469,24 @@ csharp-testing:
     - xunit
     - moq
   category: Language
+csharp-tooling:
+  path: language/csharp/tooling.md
+  description: "C# and .NET project baseline, required gate, modern idioms and ASP.NET Core notes. Use when setting up a .NET project or running its quality gate."
+  languages:
+    - csharp
+  levels:
+    - standard
+    - full
+  tags:
+    - csharp
+    - dotnet
+    - tooling
+    - nullable
+    - analyzers
+  category: Language
 ruby-testing:
   path: language/ruby/testing.md
+  description: "RSpec structure, let and subject, matchers, shared examples and stubbing. Use when writing or changing Ruby specs."
   languages:
     - ruby
   levels:
@@ -296,8 +497,24 @@ ruby-testing:
     - testing
     - rspec
   category: Language
+ruby-tooling:
+  path: language/ruby/tooling.md
+  description: "Ruby baseline, RuboCop and Bundler gate, practices and testing. Use when setting up a Ruby project or running its quality gate."
+  languages:
+    - ruby
+  levels:
+    - standard
+    - full
+  tags:
+    - ruby
+    - tooling
+    - rubocop
+    - bundler
+    - rspec
+  category: Language
 javascript-testing:
   path: language/javascript/testing.md
+  description: "Jest structure, matchers, async tests, mocking and setup or teardown. Use when writing or changing JavaScript tests."
   languages:
     - javascript
   levels:
@@ -310,6 +527,7 @@ javascript-testing:
   category: Language
 dart-basics:
   path: language/dart/basics.md
+  description: "Dart null safety, type annotations, null-aware operators, collections, functions, classes and enums. Use when writing or reviewing Dart or Flutter code."
   languages:
     - dart
   levels:
@@ -323,6 +541,7 @@ dart-basics:
   category: Language
 dart-async:
   path: language/dart/async.md
+  description: "Dart Futures, async/await, Streams, StreamController and Isolates. Use when writing asynchronous Dart code."
   languages:
     - dart
   levels:
@@ -337,6 +556,7 @@ dart-async:
   category: Language
 dart-error-handling:
   path: language/dart/error-handling.md
+  description: "Dart custom exceptions, try-catch-finally, Result and Either types, validation and Flutter error boundaries. Use when handling errors in Dart."
   languages:
     - dart
   levels:
@@ -349,6 +569,7 @@ dart-error-handling:
   category: Language
 dart-testing:
   path: language/dart/testing.md
+  description: "Dart unit tests, organization, matchers, Mockito, async and stream tests and Flutter widget tests. Use when writing or changing Dart tests."
   languages:
     - dart
   levels:
@@ -361,6 +582,7 @@ dart-testing:
   category: Language
 swift-basics:
   path: language/swift/basics.md
+  description: "Swift naming, type safety, value vs reference types, properties, access control, extensions and guard. Use when writing or reviewing Swift code."
   languages:
     - swift
   levels:
@@ -375,6 +597,7 @@ swift-basics:
   category: Language
 swift-concurrency:
   path: language/swift/concurrency.md
+  description: "Swift async/await, actors, MainActor, structured concurrency with Task and TaskGroup, AsyncSequence and continuations. Use when writing concurrent Swift code."
   languages:
     - swift
   levels:
@@ -389,6 +612,7 @@ swift-concurrency:
   category: Language
 swift-swiftui-mvvm:
   path: language/swift/swiftui-mvvm.md
+  description: "SwiftUI with MVVM: state property wrappers (State, StateObject, ObservedObject, EnvironmentObject, Binding) and ViewModel structure. Use when building SwiftUI views or view models."
   languages:
     - swift
   levels:
@@ -403,6 +627,7 @@ swift-swiftui-mvvm:
   category: Language
 swift-testing:
   path: language/swift/testing.md
+  description: "Swift Testing framework and XCTest: suites, parameterized tests, expectations, error expectations and async tests. Use when writing or changing Swift tests."
   languages:
     - swift
   levels:
@@ -416,6 +641,7 @@ swift-testing:
   category: Language
 swift-error-handling:
   path: language/swift/error-handling.md
+  description: "Swift error types, throws vs Result, do-catch and try variants. Use when defining or handling errors in Swift."
   languages:
     - swift
   levels:
@@ -429,6 +655,7 @@ swift-error-handling:
   category: Language
 microservices-boundaries:
   path: architecture/microservices/boundaries.md
+  description: "How to size and bound services: bounded contexts, ownership, communication and data rules. Use when splitting or defining a microservice."
   architectures:
     - microservices
   levels:
@@ -441,6 +668,7 @@ microservices-boundaries:
   category: Architecture
 microservices-communication:
   path: architecture/microservices/communication.md
+  description: "Synchronous vs asynchronous service calls, event integration and the tolerant reader pattern. Use when services need to talk to each other."
   architectures:
     - microservices
   levels:
@@ -454,6 +682,7 @@ microservices-communication:
   category: Architecture
 microservices-data:
   path: architecture/microservices/data.md
+  description: "Database per service, eventual consistency, sagas and data synchronization. Use when services need to share or keep data consistent."
   architectures:
     - microservices
   levels:
@@ -467,6 +696,7 @@ microservices-data:
   category: Architecture
 microservices-resilience:
   path: architecture/microservices/resilience.md
+  description: "Circuit breakers, retry with backoff, bulkheads, timeouts, graceful degradation and health checks. Use when calling remote services that can fail."
   architectures:
     - microservices
   levels:
@@ -479,6 +709,7 @@ microservices-resilience:
   category: Architecture
 microservices-api-gateway:
   path: architecture/microservices/api-gateway.md
+  description: "API gateway responsibilities, backend-for-frontend, routing and cross-cutting concerns. Use when adding or changing a gateway."
   architectures:
     - microservices
   levels:
@@ -492,6 +723,7 @@ microservices-api-gateway:
   category: Architecture
 modular-monolith-structure:
   path: architecture/modular-monolith/structure.md
+  description: "Modular monolith layout: module structure, public interfaces, internal layering and shared infrastructure. Use when creating or organizing modules."
   architectures:
     - modular-monolith
   levels:
@@ -504,6 +736,7 @@ modular-monolith-structure:
   category: Architecture
 modular-monolith-boundaries:
   path: architecture/modular-monolith/boundaries.md
+  description: "Module boundaries: low coupling, no cross-module database access, domain events and circular dependency fixes. Use when one module needs another module's data or behaviour."
   architectures:
     - modular-monolith
   levels:
@@ -517,6 +750,7 @@ modular-monolith-boundaries:
   category: Architecture
 testing-unit-fundamentals:
   path: testing/unit-fundamentals.md
+  description: "Unit testing principles: Arrange-Act-Assert, test behaviour not implementation, descriptive names, independent tests and edge cases. Use when writing or reviewing unit tests."
   levels:
     - standard
     - full
@@ -527,6 +761,7 @@ testing-unit-fundamentals:
   category: Testing
 testing-unit-mocking:
   path: testing/unit-mocking.md
+  description: "Test doubles (stubs, mocks, spies, fakes), when to mock, verification and resetting. Use when isolating dependencies in tests."
   levels:
     - standard
     - full
@@ -538,6 +773,7 @@ testing-unit-mocking:
   category: Testing
 testing-integration:
   path: testing/integration.md
+  description: "Integration tests with real dependencies: API tests, database transactions, test data builders and isolation. Use when testing across components, HTTP endpoints or a database."
   levels:
     - full
   tags:
@@ -548,10 +784,9 @@ testing-integration:
   category: Testing
 testing-basics:
   path: testing/basics.md
+  description: "Writing a first unit test: structure, common assertions, expected errors, async tests, naming and running tests. Use when starting tests in a project that has few or none."
   levels:
     - basic
-    - standard
-    - full
   tags:
     - testing
     - unit-tests
@@ -560,6 +795,7 @@ testing-basics:
   category: Testing
 security-injection:
   path: security/injection.md
+  description: "Preventing SQL, NoSQL, command and path-traversal injection with input validation. Use when handling user input, building queries or running shell commands."
   levels:
     - basic
     - standard
@@ -572,6 +808,7 @@ security-injection:
   category: Security
 security-auth-jwt:
   path: security/auth-jwt.md
+  description: "Password hashing, JWT handling, login protection, sessions and authorization middleware. Use when implementing authentication, sessions or access control."
   levels:
     - standard
     - full
@@ -584,6 +821,7 @@ security-auth-jwt:
   category: Security
 security-secrets:
   path: security/secrets.md
+  description: "Keeping secrets out of code: environment variables, validation, .gitignore, example files, CI secrets and rotation. Use when handling API keys, credentials or configuration."
   levels:
     - standard
     - full
@@ -593,8 +831,37 @@ security-secrets:
     - env
     - configuration
   category: Security
+security-supply-chain:
+  path: security/supply-chain.md
+  description: "Dependency hygiene: vetting new packages, lockfiles, cooldown on new releases, CI hardening and install scripts. Use when adding or upgrading dependencies or editing CI and build pipelines."
+  levels:
+    - standard
+    - full
+  tags:
+    - security
+    - supply-chain
+    - dependencies
+    - lockfiles
+    - sbom
+    - ci
+  category: Security
+security-ai-agents:
+  path: security/ai-agents.md
+  description: "Using AI coding agents safely: conservative permissions, untrusted content, prompt injection, reviewing generated code and secrets hygiene. Use when configuring an AI assistant or reviewing AI-generated changes."
+  levels:
+    - basic
+    - standard
+    - full
+  tags:
+    - security
+    - ai
+    - agents
+    - prompt-injection
+    - mcp
+  category: Security
 security-headers:
   path: security/headers.md
+  description: "HTTP security headers, CSP, CORS, HTTPS enforcement and cookie flags. Use when configuring a web server, middleware or browser-facing responses."
   levels:
     - full
   tags:
@@ -606,6 +873,7 @@ security-headers:
   category: Security
 performance-basics:
   path: performance/basics.md
+  description: "Performance fundamentals: right data structure, avoiding N+1 queries, not loading unneeded data and async I/O. Use when investigating or preventing slow code."
   levels:
     - basic
     - standard
@@ -619,6 +887,7 @@ performance-basics:
   category: Performance
 performance-caching:
   path: performance/caching.md
+  description: "Cache implementations: in-memory TTL cache, Redis get/set/invalidate and memoization. Use when writing cache code or memoizing expensive work."
   levels:
     - full
   tags:
@@ -629,6 +898,7 @@ performance-caching:
   category: Performance
 performance-async:
   path: performance/async.md
+  description: "Async performance: parallel execution, partial failures, batching, debouncing, throttling and concurrency limits. Use when many I/O operations are slow or overload a dependency."
   levels:
     - standard
     - full
@@ -640,6 +910,7 @@ performance-async:
   category: Performance
 database-basics:
   path: database/basics.md
+  description: "SQL CRUD fundamentals: inserting, querying, updating and deleting with safe, readable queries. Use when writing basic database queries."
   levels:
     - basic
     - standard
@@ -653,6 +924,7 @@ database-basics:
   category: Database
 database-schema:
   path: database/schema.md
+  description: "Schema design: naming, primary keys, audit columns, relationships, constraints, data types and normalization. Use when creating or changing tables or migrations."
   levels:
     - standard
     - full
@@ -666,6 +938,7 @@ database-schema:
   category: Database
 database-indexing:
   path: database/indexing.md
+  description: "When to add indexes, composite, partial and unique indexes, index types, query analysis and maintenance. Use when a query is slow or a new access pattern is added."
   levels:
     - full
   datasources:
@@ -678,10 +951,9 @@ database-indexing:
   category: Database
 api-basics:
   path: api/basics.md
+  description: "HTTP methods, request and response shapes and status codes for API endpoints. Use when adding or reviewing HTTP endpoints."
   levels:
     - basic
-    - standard
-    - full
   tags:
     - api
     - http
@@ -691,6 +963,7 @@ api-basics:
   category: API Design
 api-rest:
   path: api/rest.md
+  description: "REST design: resource-oriented URLs, methods, status codes, response format, nesting and versioning. Use when designing or reviewing a REST API."
   levels:
     - standard
     - full
@@ -702,6 +975,7 @@ api-rest:
   category: API Design
 api-pagination:
   path: api/pagination.md
+  description: "Offset, cursor and keyset pagination, response links and limits. Use when an endpoint returns a collection."
   levels:
     - standard
     - full
@@ -713,6 +987,7 @@ api-pagination:
   category: API Design
 code-style-naming:
   path: style/naming.md
+  description: "Naming for variables, functions, constants, types and files; avoiding bad names and magic numbers. Use when naming new code or reviewing names."
   levels:
     - basic
     - standard
@@ -724,6 +999,7 @@ code-style-naming:
   category: Code Style
 code-style-organization:
   path: style/organization.md
+  description: "Function, nesting and file length limits, file organization, single responsibility and DRY. Use when structuring or refactoring code."
   levels:
     - standard
     - full
@@ -735,6 +1011,7 @@ code-style-organization:
   category: Code Style
 error-handling-strategy:
   path: error-handling/strategy.md
+  description: "Error strategy: custom errors, never swallowing errors, specific messages, centralized handling and Result types. Use when designing how a service reports and recovers from failures."
   levels:
     - standard
     - full
@@ -746,10 +1023,9 @@ error-handling-strategy:
   category: Error Handling
 error-handling-basics:
   path: error-handling/basics.md
+  description: "Throwing and catching errors, useful messages, async errors and when to catch. Use when adding try/catch or error paths to code."
   levels:
     - basic
-    - standard
-    - full
   tags:
     - errors
     - exceptions
@@ -758,6 +1034,7 @@ error-handling-basics:
   category: Error Handling
 solid-principles:
   path: architecture/solid/principles.md
+  description: "SOLID principles with examples: SRP, OCP, LSP, ISP and DIP. Use when designing classes or reviewing coupling."
   levels:
     - standard
     - full
@@ -772,6 +1049,7 @@ solid-principles:
   category: Architecture
 clean-architecture-layers:
   path: architecture/clean-architecture/layers.md
+  description: "Clean Architecture: the dependency rule, entities, use cases, interface adapters and frameworks. Use when structuring code in a clean-architecture project."
   architectures:
     - clean-architecture
   levels:
@@ -785,6 +1063,7 @@ clean-architecture-layers:
   category: Architecture
 ddd-tactical:
   path: architecture/ddd/tactical.md
+  description: "DDD building blocks: entities, value objects, aggregates, domain events and repositories. Use when modelling domain objects in a DDD project."
   architectures:
     - ddd
   levels:
@@ -799,6 +1078,7 @@ ddd-tactical:
   category: Architecture
 ddd-strategic:
   path: architecture/ddd/strategic.md
+  description: "DDD strategic design: ubiquitous language, bounded contexts and context-mapping patterns. Use when deciding how domain areas relate."
   architectures:
     - ddd
   levels:
@@ -811,6 +1091,7 @@ ddd-strategic:
   category: Architecture
 event-driven-patterns:
   path: architecture/event-driven/patterns.md
+  description: "Event sourcing, CQRS, sagas and event versioning. Use when designing event-driven workflows or event stores."
   architectures:
     - event-driven
   levels:
@@ -823,6 +1104,7 @@ event-driven-patterns:
   category: Architecture
 event-driven-messaging:
   path: architecture/event-driven/messaging.md
+  description: "Commands, events and queries, message buses, queue integration, outbox and delivery guarantees. Use when adding messaging or a message broker."
   architectures:
     - event-driven
   levels:
@@ -836,6 +1118,7 @@ event-driven-messaging:
   category: Architecture
 layered-architecture:
   path: architecture/layered/layers.md
+  description: "Presentation, domain and data-access layers and their dependency rules. Use when structuring code in a layered project."
   architectures:
     - layered
   levels:
@@ -849,6 +1132,7 @@ layered-architecture:
   category: Architecture
 serverless-patterns:
   path: architecture/serverless/patterns.md
+  description: "Serverless principles: function design, cold starts and state. Use when designing functions or event handlers for a serverless platform."
   architectures:
     - serverless
   levels:
@@ -862,6 +1146,7 @@ serverless-patterns:
   category: Architecture
 serverless-best-practices:
   path: architecture/serverless/best-practices.md
+  description: "Serverless function design, cold-start reduction, dependency size, security and monitoring. Use when tuning or reviewing serverless functions."
   architectures:
     - serverless
   levels:
@@ -875,6 +1160,7 @@ serverless-best-practices:
   category: Architecture
 hexagonal-architecture:
   path: architecture/hexagonal/ports-adapters.md
+  description: "Ports and adapters: driving and driven ports, adapters and dependency inversion. Use when adding adapters or ports in a hexagonal project."
   architectures:
     - hexagonal
   levels:
@@ -888,6 +1174,7 @@ hexagonal-architecture:
   category: Architecture
 gui-architecture:
   path: architecture/gui/patterns.md
+  description: "MVC, MVP, MVVM and component architecture for user interfaces. Use when choosing how to structure UI code."
   levels:
     - standard
     - full
@@ -900,6 +1187,7 @@ gui-architecture:
   category: Architecture
 feature-toggles:
   path: architecture/feature-toggles/patterns.md
+  description: "Release, experiment and ops toggles and how to implement and retire them. Use when adding a feature flag or gradual rollout."
   levels:
     - standard
     - full
@@ -910,6 +1198,7 @@ feature-toggles:
   category: Architecture
 devops-ci-cd:
   path: devops/ci-cd.md
+  description: "CI/CD practices: continuous integration, deployment strategies (blue-green, canary, rolling) and a Rust job. Use when editing pipelines or planning a release."
   levels:
     - standard
     - full
@@ -922,6 +1211,7 @@ devops-ci-cd:
   category: DevOps
 devops-practices:
   path: devops/practices.md
+  description: "Infrastructure as code, containers, observability and health checks. Use when working on deployment or infrastructure."
   levels:
     - full
   tags:
@@ -932,6 +1222,7 @@ devops-practices:
   category: DevOps
 devops-observability:
   path: devops/observability.md
+  description: "Structured logging, metrics, distributed tracing and OpenTelemetry. Use when adding logging, metrics or tracing."
   levels:
     - standard
     - full
@@ -944,6 +1235,7 @@ devops-observability:
   category: DevOps
 practices-planning:
   path: practices/planning.md
+  description: "Plan before coding: clarify requirements, no assumptions, phased delivery. Use when starting a non-trivial feature or task."
   levels:
     - standard
     - full
@@ -956,6 +1248,7 @@ practices-planning:
   category: Best Practices
 practices-documentation:
   path: practices/documentation.md
+  description: "Documentation layout, keeping the repo root clean and maintaining a memory-lane document. Use when creating or reorganizing docs."
   levels:
     - standard
     - full
@@ -968,6 +1261,7 @@ practices-documentation:
   category: Best Practices
 practices-code-review:
   path: practices/code-review.md
+  description: "Review checklist, giving feedback and PR description template. Use when reviewing a change or writing a PR description."
   levels:
     - standard
     - full
@@ -979,6 +1273,7 @@ practices-code-review:
   category: Best Practices
 practices-refactoring:
   path: practices/refactoring.md
+  description: "Common code smells and safe refactoring steps. Use when cleaning up or restructuring existing code."
   levels:
     - standard
     - full
@@ -989,6 +1284,7 @@ practices-refactoring:
   category: Best Practices
 practices-version-control:
   path: practices/version-control.md
+  description: "Branching strategies and commit message conventions. Use when committing, branching or opening a PR."
   levels:
     - basic
     - standard
@@ -1001,6 +1297,7 @@ practices-version-control:
   category: Best Practices
 api-versioning:
   path: api/versioning.md
+  description: "API versioning strategies (path, header, query), deprecation and compatibility. Use when changing a public API in a breaking way."
   levels:
     - standard
     - full
@@ -1012,6 +1309,7 @@ api-versioning:
   category: API Design
 performance-caching-strategies:
   path: performance/caching-strategies.md
+  description: "Cache patterns (cache-aside, write-through, write-behind) and invalidation approaches. Use when deciding how a cache stays consistent with its source of truth."
   levels:
     - full
   tags:
@@ -1022,6 +1320,7 @@ performance-caching-strategies:
   category: Performance
 database-design-patterns:
   path: database/design-patterns.md
+  description: "Normalization vs denormalization, soft deletes, audit trails and polymorphic associations. Use when choosing a data-modelling pattern."
   levels:
     - standard
     - full
@@ -1035,6 +1334,7 @@ database-design-patterns:
   category: Database
 database-nosql:
   path: database/nosql.md
+  description: "Document, key-value and wide-column design for MongoDB, Redis and DynamoDB: schema, indexing and query patterns. Use when working with a NoSQL datastore."
   levels:
     - standard
     - full
@@ -1049,6 +1349,7 @@ database-nosql:
   category: Database
 patterns-base:
   path: patterns/base-patterns.md
+  description: "Value Object, Special Case (null object), Registry and Plugin patterns. Use when a small supporting object or lookup abstraction is needed."
   levels:
     - standard
     - full
@@ -1061,6 +1362,7 @@ patterns-base:
   category: Design Patterns
 patterns-concurrency:
   path: patterns/concurrency.md
+  description: "Optimistic, pessimistic and coarse-grained locking patterns. Use when concurrent updates can conflict."
   levels:
     - full
   tags:
@@ -1071,6 +1373,7 @@ patterns-concurrency:
   category: Design Patterns
 patterns-data-access:
   path: patterns/data-access.md
+  description: "Repository, Data Mapper, Unit of Work and Identity Map patterns. Use when designing persistence access."
   levels:
     - standard
     - full
@@ -1082,6 +1385,7 @@ patterns-data-access:
   category: Design Patterns
 patterns-distribution:
   path: patterns/distribution.md
+  description: "Remote Facade, DTO, Gateway and Service Stub patterns. Use when exposing or consuming remote interfaces."
   levels:
     - full
   tags:
@@ -1092,6 +1396,7 @@ patterns-distribution:
   category: Design Patterns
 patterns-domain-logic:
   path: patterns/domain-logic.md
+  description: "Transaction Script, Domain Model and Service Layer patterns. Use when deciding where business logic lives."
   levels:
     - standard
     - full
@@ -1102,6 +1407,7 @@ patterns-domain-logic:
   category: Design Patterns
 patterns-gof:
   path: patterns/gof.md
+  description: "Gang of Four creational, structural and behavioural patterns. Use when a classic design pattern may fit the problem."
   levels:
     - standard
     - full
@@ -1114,6 +1420,7 @@ patterns-gof:
   category: Design Patterns
 architecture-bounded-contexts:
   path: architecture/bounded-contexts/context-map.md
+  description: "Bounded contexts and context-mapping patterns (shared kernel, customer/supplier, anticorruption layer). Use when drawing or integrating context boundaries."
   architectures:
     - bounded-contexts
   levels:
@@ -1127,6 +1434,7 @@ architecture-bounded-contexts:
 
 architecture-component-based:
   path: architecture/component-based/structure.md
+  description: "Component-based UI structure: atoms to pages, composition and state management. Use when organizing UI components."
   architectures:
     - component-based
   levels:
@@ -1141,6 +1449,7 @@ architecture-component-based:
   category: Architecture
 kotlin-basics:
   path: language/kotlin/basics.md
+  description: "Kotlin null safety, val vs var and data classes. Use when writing or reviewing Kotlin code."
   languages:
     - kotlin
   levels:
@@ -1155,6 +1464,7 @@ kotlin-basics:
 
 kotlin-coroutines:
   path: language/kotlin/coroutines.md
+  description: "Kotlin suspend functions, coroutine builders and dispatchers. Use when writing coroutine-based Kotlin code."
   languages:
     - kotlin
   levels:
@@ -1168,6 +1478,7 @@ kotlin-coroutines:
 
 kotlin-idioms:
   path: language/kotlin/idioms.md
+  description: "Kotlin scope functions (let, apply, run) and extension functions. Use when refactoring Kotlin toward idiomatic style."
   languages:
     - kotlin
   levels:
@@ -1177,9 +1488,25 @@ kotlin-idioms:
     - scope-functions
     - extensions
   category: Language
+kotlin-tooling:
+  path: language/kotlin/tooling.md
+  description: "Kotlin Gradle setup, detekt and ktlint gate, idioms and testing. Use when setting up a Kotlin project or running its quality gate."
+  languages:
+    - kotlin
+  levels:
+    - standard
+    - full
+  tags:
+    - kotlin
+    - tooling
+    - gradle
+    - detekt
+    - coroutines
+  category: Language
 
 php-basics:
   path: language/php/basics.md
+  description: "PHP strict types, type declarations, union and nullable types. Use when writing or reviewing PHP code."
   languages:
     - php
   levels:
@@ -1194,6 +1521,7 @@ php-basics:
 
 php-oop:
   path: language/php/oop.md
+  description: "PHP classes and properties, interfaces, traits and enums. Use when designing PHP classes."
   languages:
     - php
   levels:
@@ -1207,6 +1535,7 @@ php-oop:
 
 php-modern:
   path: language/php/modern.md
+  description: "PHP 8 attributes, constructor property promotion and match expressions. Use when modernizing PHP code."
   languages:
     - php
   levels:
@@ -1215,4 +1544,19 @@ php-modern:
     - php
     - php8
     - attributes
+  category: Language
+php-tooling:
+  path: language/php/tooling.md
+  description: "PHP baseline, Composer, PHPStan and PHP-CS-Fixer gate, modern PHP and Laravel or Symfony notes. Use when setting up a PHP project or running its quality gate."
+  languages:
+    - php
+  levels:
+    - standard
+    - full
+  tags:
+    - php
+    - tooling
+    - composer
+    - phpstan
+    - strict-types
   category: Language

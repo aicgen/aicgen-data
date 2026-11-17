@@ -1,5 +1,13 @@
 # API Versioning
 
+## Rules
+
+- Version from day one, in the URL path (`/v1`) unless you have a strong reason for headers.
+- Make additive changes (new optional fields, endpoints) without a new version; only breaking changes (removed or renamed fields, changed types or semantics) need one.
+- Support the previous version for a published period and announce deprecations with `Deprecation`, `Sunset` and `Link` headers.
+- Document migrations and keep contract tests for each supported version.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Versioning Strategies
 
 ### URL Path Versioning

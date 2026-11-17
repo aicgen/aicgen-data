@@ -1,5 +1,15 @@
 # SOLID Principles
 
+## Rules
+
+- Single responsibility: a class or module has one reason to change; split code that mixes persistence, business rules and I/O.
+- Open/closed: add behavior through new implementations of an interface instead of editing branching `if/else` or `switch` chains.
+- Liskov: a subtype must honor the base type's contract (no stricter preconditions, no surprise exceptions); if it cannot, do not inherit.
+- Interface segregation: define small, client-focused interfaces rather than one wide one.
+- Dependency inversion: depend on abstractions and inject dependencies through constructors; do not instantiate infrastructure inside business logic.
+- Prefer composition over inheritance, and do not add abstractions until there is a second use or a real need to substitute.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Single Responsibility Principle (SRP)
 
 A class should have only one reason to change.

@@ -1,5 +1,13 @@
 # Database Design Patterns
 
+## Rules
+
+- Normalize by default; denormalize only for a measured read bottleneck and keep the source of truth clear.
+- Prefer soft deletes (`deleted_at`) only when you need recovery or history, and filter them in every query (or via a view).
+- Record audit trails (who, what, when, old and new values) in an append-only table.
+- Avoid polymorphic `type` and `id` columns that foreclose foreign keys; prefer separate link tables per parent type.
+- Plan migrations, partitioning and archival early for large tables.
+
 ## Schema Design
 
 ### Normalization

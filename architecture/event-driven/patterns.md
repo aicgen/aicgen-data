@@ -1,5 +1,14 @@
 # Event-Driven Architecture
 
+## Rules
+
+- Events are immutable facts named in the past tense; version them and keep changes backward-compatible.
+- Use event sourcing only when you need an audit trail or temporal queries; it adds real complexity (snapshots, projections, upcasting).
+- Use CQRS to separate read and write models only where read and write needs differ; accept eventual consistency between them.
+- Coordinate multi-service workflows with sagas and compensating actions, not distributed transactions.
+- Make consumers idempotent: delivery is at least once, so duplicates and reordering will happen.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Event Sourcing
 
 Store state as a sequence of events.

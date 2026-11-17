@@ -1,5 +1,14 @@
 # Security Headers
 
+## Rules
+
+- Set security headers globally (Helmet or equivalent) and verify them with an automated check.
+- Use a Content-Security-Policy that denies by default (`default-src 'self'`); avoid `unsafe-inline` and `unsafe-eval`, and use nonces or hashes.
+- Send HSTS, `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY` (or CSP `frame-ancestors`), `Referrer-Policy` and a minimal `Permissions-Policy`. Do not rely on `X-XSS-Protection`.
+- Configure CORS with an explicit origin allowlist; never combine a wildcard origin with credentials.
+- Mark cookies `Secure`, `HttpOnly` and `SameSite`, and redirect all HTTP to HTTPS.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Essential Headers with Helmet
 
 ```typescript
@@ -36,8 +45,8 @@ app.use((req, res, next) => {
   // Prevent clickjacking
   res.setHeader('X-Frame-Options', 'DENY');
 
-  // XSS protection
-  res.setHeader('X-XSS-Protection', '1; mode=block');
+  // Legacy XSS auditor is deprecated and can introduce bugs: disable it, rely on CSP
+  res.setHeader('X-XSS-Protection', '0');
 
   // Force HTTPS
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
@@ -134,7 +143,7 @@ res.cookie('token', value, {
 ```
 ✅ X-Content-Type-Options: nosniff
 ✅ X-Frame-Options: DENY
-✅ X-XSS-Protection: 1; mode=block
+✅ X-XSS-Protection: 0 (or omit; rely on CSP)
 ✅ Strict-Transport-Security: max-age=31536000
 ✅ Content-Security-Policy: (appropriate policy)
 ✅ Referrer-Policy: strict-origin-when-cross-origin

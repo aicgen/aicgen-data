@@ -7,3 +7,4 @@ Best practices for Kotlin development on Android and backend.
 - `basics` - Syntax, Null Safety, Data Classes ([basics.md](basics.md))
 - `coroutines` - Async programming, Suspended functions ([coroutines.md](coroutines.md))
 - `idioms` - Scope functions (`let`, `apply`), Extensions ([idioms.md](idioms.md))
+- **tooling.md** - Gradle Kotlin DSL, detekt/ktlint, idioms, coroutines

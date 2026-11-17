@@ -1,5 +1,12 @@
 # Testing in Dart
 
+## Rules
+
+- Use `package:test` or `flutter_test` with Arrange-Act-Assert and descriptive `group`/`test` names.
+- Use Mockito or Mocktail for boundary doubles and prefer hand-written fakes for own code.
+- Test streams with `expectLater` and `emitsInOrder`; test widgets with `WidgetTester` and `pumpAndSettle`.
+- Keep tests independent and avoid real network and time; use `fakeAsync` for timers.
+
 ## Unit Testing
 
 ```dart

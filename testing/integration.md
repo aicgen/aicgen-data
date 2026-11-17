@@ -1,5 +1,14 @@
 # Integration Testing
 
+## Rules
+
+- Integration tests use real implementations of the boundary under test (real database, real HTTP stack) and fake only external third parties.
+- Isolate each test: roll back a transaction or truncate tables, and use unique data.
+- Build test data with builders or factories with sensible defaults so each test states only what matters.
+- Run against a disposable environment (containers or ephemeral schema), never shared or production data.
+- Keep the suite small and focused on seams: queries, transactions, API contracts, serialization. Cover logic with unit tests.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Testing Real Dependencies
 
 ```typescript

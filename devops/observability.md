@@ -1,5 +1,14 @@
 # Observability
 
+## Rules
+
+- Instrument with OpenTelemetry for logs, metrics and traces so you are not tied to one vendor.
+- Emit structured (JSON) logs with timestamp, level, service, trace ID and request context; never log secrets or personal data.
+- Track the golden signals for every service: latency, traffic, errors, saturation. Use histograms for latency.
+- Propagate trace context (W3C `traceparent`) across service and queue boundaries.
+- Expose `/health/live`, `/health/ready` and a startup check; keep liveness cheap and readiness dependency-aware.
+- Alert on symptoms, make every alert actionable, and link it to a runbook.
+
 ## Overview
 
 Observability is the ability to understand the internal state of a system by examining its outputs. In modern distributed systems, it goes beyond simple monitoring to include logging, metrics, and tracing.

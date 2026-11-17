@@ -1,5 +1,14 @@
 # Error Handling Basics
 
+## Rules
+
+- Fail fast: validate input at the boundary and raise immediately with a specific, actionable message.
+- Catch an error only where you can recover, add context, or translate it; otherwise let it propagate.
+- Never swallow errors with an empty catch, and never use exceptions for normal control flow.
+- Throw real error types (not strings or plain objects) and keep the original cause attached.
+- Handle async errors explicitly (await inside try, or a rejection handler) and release resources in finally or equivalent.
+- Log an error once, where it is handled, with context but without secrets or personal data.
+
 ## Throwing Errors
 
 Use `throw` to signal when something goes wrong.

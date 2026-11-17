@@ -1,5 +1,13 @@
 # Python Testing with pytest
 
+## Rules
+
+- Use pytest with plain `assert`, one behavior per test, and descriptive `test_` names.
+- Share setup with fixtures (scoped narrowly); parametrize with `@pytest.mark.parametrize` instead of loops in tests.
+- Mock only at boundaries (`monkeypatch`, `unittest.mock.patch` where the object is used, `AsyncMock` for coroutines); prefer fakes for own code.
+- Use `tmp_path` and in-memory resources so tests never touch the real filesystem, network or clock.
+- Test exceptions with `pytest.raises(..., match=...)` and measure coverage as a signal, not a goal.
+
 ## Basic Test Structure
 
 ```python

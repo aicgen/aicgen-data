@@ -1,5 +1,15 @@
 # DDD Tactical Patterns
 
+## Rules
+
+- Entities have identity and a lifecycle; value objects are immutable, compared by value and validate themselves on construction.
+- An aggregate is a consistency boundary: modify it only through its root, keep it small, reference other aggregates by ID, and change one aggregate per transaction.
+- Enforce invariants inside the aggregate; never leave it in an invalid state.
+- Raise domain events for facts that other parts of the system care about (named in the past tense) and publish them after the transaction commits.
+- One repository per aggregate root, with an interface in the domain and an implementation in infrastructure.
+- Use domain services only for logic that does not belong to a single entity.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Entities
 
 Objects with identity that persists through state changes.

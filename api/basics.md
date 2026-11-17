@@ -1,5 +1,14 @@
 # API Basics
 
+## Rules
+
+- Use methods for their meaning: GET reads (safe, no side effects), POST creates, PUT replaces, PATCH partially updates, DELETE removes. PUT, PATCH-as-idempotent and DELETE must be safe to repeat.
+- Return accurate status codes: 200 OK, 201 Created (with a Location), 204 No Content, 400 invalid input, 401 unauthenticated, 403 forbidden, 404 not found, 409 conflict, 422 semantic validation, 429 rate limited, 500/503 server faults.
+- Use plural nouns in URLs (`/users/123`), never verbs, and keep nesting shallow.
+- Validate every request body and query parameter at the edge and reject bad input with a structured error.
+- Use one error shape everywhere: `{ error: { code, message, details? } }`. Never leak stack traces or internals.
+- Use query parameters for filtering, sorting and pagination.
+
 ## HTTP Methods
 
 Use the right method for each operation:

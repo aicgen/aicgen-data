@@ -1,5 +1,13 @@
 # Python Type Hints
 
+## Rules
+
+- Annotate all public function signatures and use built-in generics (`list[str]`, `dict[str, int]`) and `X | None` instead of `typing.List`, `Optional`, `Union`.
+- Prefer `Protocol` for structural interfaces, `TypedDict` or dataclasses for structured data, and `Literal`/`Enum` for fixed choices.
+- Avoid `Any`; use `object`, `TypeVar`, or a Protocol, and keep `# type: ignore` narrow with a reason.
+- Run a type checker (mypy or pyright) in strict mode in CI and make it part of the gate.
+- Use `Self`, `TypeAlias` and `ParamSpec` for precise types instead of casts.
+
 ## Basic Type Annotations
 
 ```python

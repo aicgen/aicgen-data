@@ -1,5 +1,13 @@
 # JavaScript Testing (Jest)
 
+## Rules
+
+- Use Jest or Vitest with Arrange-Act-Assert and descriptive `describe`/`it` names.
+- Mock only boundaries (`jest.fn`, `jest.mock`, fake timers) and restore mocks between tests.
+- Always `await` async assertions (`await expect(p).resolves...`) or return the promise.
+- Keep tests independent and deterministic: fresh data per test, no real network or clock.
+- Test behavior through public functions, not internals.
+
 ## Project Structure
 
 ```

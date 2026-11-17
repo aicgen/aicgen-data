@@ -1,5 +1,14 @@
 # TypeScript Performance
 
+## Rules
+
+- Measure before optimizing; profile with the runtime's profiler.
+- Use `Map` and `Set` for frequent lookups and membership checks instead of array scans.
+- Avoid N+1 queries; batch and parallelize independent I/O.
+- Memoize only pure, expensive functions with bounded caches.
+- Avoid needless object copies and spreads in hot loops, and stream large payloads instead of buffering them.
+- Keep type-level complexity modest; very deep conditional types slow the compiler.
+
 ## Choose Right Data Structures
 
 ```typescript

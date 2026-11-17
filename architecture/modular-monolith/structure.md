@@ -1,5 +1,14 @@
 # Modular Monolith Structure
 
+## Rules
+
+- Organize code by business module, with each module owning its domain, application and persistence code.
+- Expose each module through a small public interface; everything else is internal and must not be imported by other modules.
+- Keep modules independently testable and enforce boundaries with lint rules, package visibility or architecture tests.
+- Share only genuinely common infrastructure (logging, config, auth), not business code.
+- Keep a module's tables separate (own schema or prefix) so it can be extracted later.
+- Examples below are TypeScript; apply the same principles idiomatically in the project language.
+
 ## Project Organization
 
 ```

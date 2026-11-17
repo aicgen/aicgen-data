@@ -1,4 +1,14 @@
 version: 1
+# Context budget model (see ../README.md#context-budgets)
+#   always-on  : CLAUDE.md, AGENTS.md, copilot-instructions.md, Antigravity main rule. Index + commands only.
+#   scoped     : one file per guideline, loaded when matching files are touched (Claude rules paths:,
+#                Copilot applyTo, Antigravity trigger: glob).
+#   on-demand  : one skill per guideline (Claude .claude/skills, Copilot .github/skills, Codex .agents/skills)
+#                or an Antigravity trigger: model_decision rule. Only name + description are always visible.
+verifiedOn: 2026-11-17
+# Verified against vendor docs on this date: Claude Code (memory, skills, hooks, settings), GitHub Copilot and VS Code
+# (custom agents, skills, instructions, prompt files, hooks), OpenAI Codex (AGENTS.md, skills, plugins, config),
+# Google Antigravity (rules, skills, workflows).
 assistants:
   claude-code:
     displayName: Claude Code
@@ -69,14 +79,21 @@ assistants:
         stability: stable
         risk: guided
         docsUrl: https://code.visualstudio.com/docs/copilot/copilot-customization
-        limit: Prompt files are reusable tasks.
-      - id: chat-modes
-        output: .github/chatmodes/*.chatmode.md
+        limit: VS Code documents prompt files as running only in the Local harness, which it plans to remove by February 2027; the docs recommend skills for reusable tasks.
+      - id: custom-agents
+        output: .github/agents/*.agent.md
         minLevel: full
         stability: stable
         risk: agentic
-        docsUrl: https://code.visualstudio.com/docs/copilot/customization/custom-chat-modes
-        limit: Chat modes depend on VS Code support and enabled tools.
+        docsUrl: https://docs.github.com/en/copilot/reference/custom-agents-configuration
+        limit: Chat modes (.chatmode.md) were renamed to custom agents (.agent.md). A description is required; the prompt is limited to 30,000 characters. Generated reviewer agents are read-only (tools read, search).
+      - id: guideline-skills
+        output: .github/skills/aicgen-*/SKILL.md
+        minLevel: basic
+        stability: stable
+        risk: passive
+        docsUrl: https://code.visualstudio.com/docs/copilot/customization/agent-skills
+        limit: Skill name must match its folder, lowercase letters, digits and hyphens, at most 64 characters; description at most 1024 characters.
       - id: mcp-templates
         output: .aicgen/mcp/copilot.md
         minLevel: full
@@ -89,21 +106,21 @@ assistants:
     displayName: Antigravity
     surfaces:
       - id: main-instructions
-        output: .agent/rules/instructions.md
+        output: .agents/rules/aicgen-instructions.md
         minLevel: basic
         stability: stable
         risk: passive
-        docsUrl: https://antigravity.google/docs/rules-workflows
-        limit: Rules should be persistent and reusable.
+        docsUrl: https://antigravity.google/docs/rules.md
+        limit: Rule files need `trigger` frontmatter or they are silently discarded. 24,000 bytes per file; 20,000-token budget for always-on rules.
       - id: workflow-commands
-        output: .agent/workflows/*.md
+        output: .agents/workflows/*.md
         minLevel: standard
         stability: stable
         risk: guided
-        docsUrl: https://antigravity.google/docs/rules-workflows
-        limit: Workflows should cover repeatable coding tasks.
+        docsUrl: https://antigravity.google/docs/rules.md
+        limit: Antigravity documents workflows as deprecated in favour of skills; they keep working. Limit 12,000 characters per file.
       - id: plugins
-        output: .agent/plugin templates
+        output: .agents/plugin templates
         minLevel: full
         stability: preview
         risk: side-effecting
@@ -119,7 +136,7 @@ assistants:
         stability: stable
         risk: passive
         docsUrl: https://developers.openai.com/codex/guides/agents-md
-        limit: AGENTS.md is the first-class shared instruction file.
+        limit: AGENTS.md is the first-class shared instruction file. Codex reads at most 32 KiB (project_doc_max_bytes) per run.
       - id: skills
         output: plugins/aicgen-sdlc/skills/*/SKILL.md
         minLevel: standard
@@ -128,12 +145,12 @@ assistants:
         docsUrl: https://developers.openai.com/codex/skills
         limit: Skill descriptions should stay narrow.
       - id: plugins
-        output: plugins/aicgen-sdlc/.codex-plugin/plugin.json
+        output: plugins/aicgen-sdlc/plugin.json
         minLevel: standard
         stability: stable
         risk: agentic
         docsUrl: https://developers.openai.com/codex/plugins/build
-        limit: Generated plugins are project-local; store publishing is out of scope.
+        limit: Portable plugin.json is the entry point; .codex-plugin/plugin.json is kept as a supported compatibility manifest. Generated plugins are project-local; store publishing is out of scope.
       - id: hooks
         output: .codex/hooks.json
         minLevel: full

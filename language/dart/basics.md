@@ -1,5 +1,12 @@
 # Dart Fundamentals
 
+## Rules
+
+- Use sound null safety: avoid `!` and `late` unless justified, prefer `?.`, `??` and pattern matching.
+- Follow Effective Dart: `UpperCamelCase` types, `lowerCamelCase` members, `lowercase_with_underscores` files and packages.
+- Prefer `final` and `const`, immutable data classes, and collection literals; use records and sealed classes for modelling.
+- Annotate public APIs with types, and run `dart format`, `dart analyze` and the `lints`/`flutter_lints` rule set.
+
 ## Null Safety
 
 Dart has sound null safety - non-nullable by default:

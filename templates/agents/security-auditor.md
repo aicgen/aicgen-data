@@ -1,7 +1,8 @@
 ---
-model: "claude-opus-4-5"
-temperature: 0.3
-description: "Identifies security vulnerabilities and risks"
+name: security-auditor
+description: "Identifies security vulnerabilities and risks. Use when changes touch authentication, input handling, secrets or dependencies."
+tools: Read, Grep, Glob, Bash
+model: opus
 ---
 
 # Security Auditor

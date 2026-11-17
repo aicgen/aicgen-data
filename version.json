@@ -1,13 +1,13 @@
 {
-  "version": "1.2.0",
-  "lastUpdated": "2026-05-26",
-  "totalGuidelines": 99,
+  "version": "2.0.0",
+  "lastUpdated": "2026-11-17",
+  "totalGuidelines": 116,
   "totalWorkflows": 6,
   "categories": {
-    "Language": 39,
+    "Language": 54,
     "Architecture": 21,
     "Testing": 4,
-    "Security": 4,
+    "Security": 6,
     "Performance": 4,
     "Database": 5,
     "API Design": 4,
@@ -18,18 +18,18 @@
     "Design Patterns": 6
   },
   "languages": {
-    "typescript": 8,
-    "python": 4,
-    "go": 2,
-    "rust": 2,
-    "java": 2,
-    "csharp": 2,
-    "ruby": 2,
+    "typescript": 9,
+    "python": 5,
+    "go": 3,
+    "rust": 9,
+    "java": 3,
+    "csharp": 3,
+    "ruby": 3,
     "javascript": 2,
     "dart": 4,
     "swift": 5,
-    "kotlin": 3,
-    "php": 3
+    "kotlin": 4,
+    "php": 4
   },
   "architectures": {
     "microservices": 5,
@@ -44,9 +44,9 @@
     "component-based": 1
   },
   "levels": {
-    "basic": 23,
-    "standard": 83,
-    "full": 99
+    "basic": 25,
+    "standard": 94,
+    "full": 113
   },
   "datasources": {
     "sql": 3,

@@ -1,5 +1,12 @@
 # PHP OOP
 
+## Rules
+
+- Depend on interfaces and inject dependencies through the constructor; avoid static state and service locators.
+- Use `readonly` properties and value objects for immutability, and `final` classes by default.
+- Prefer composition and small interfaces; use traits sparingly and never for shared state.
+- Use backed enums instead of string or integer constants.
+
 ## Classes and properties
 
 Use typed properties and visibility modifiers.

@@ -1,5 +1,13 @@
 # Python Async/Await
 
+## Rules
+
+- Use `asyncio.run` once at the entry point; never block the event loop with `time.sleep`, `requests` or heavy CPU work (use `asyncio.to_thread` or a process pool).
+- Run independent coroutines concurrently with `asyncio.gather` or `asyncio.TaskGroup` (preferred in 3.11+), not sequential awaits.
+- Always set timeouts (`asyncio.timeout`) and handle `asyncio.CancelledError` by cleaning up and re-raising.
+- Bound concurrency with a `Semaphore`.
+- Keep references to created tasks and never fire and forget; use `async with` for resources.
+
 ## Basic Async Patterns
 
 ```python
